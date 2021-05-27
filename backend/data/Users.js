@@ -51,7 +51,6 @@ const Users =[
     password : "hassan91170",
     // "createdAt" : ISODate("2021-04-17T19:02:43.822Z"),
     // "updatedAt" : ISODate("2021-05-16T21:15:46.272Z"),
-    "__v" : 0
 },
 
 /* 4 */
@@ -68,7 +67,6 @@ const Users =[
     password : "dani",
     // "createdAt" : ISODate("2021-05-16T17:41:18.471Z"),
     // "updatedAt" : ISODate("2021-05-24T21:56:05.419Z"),
-    "__v" : 0
 }
 ]
 

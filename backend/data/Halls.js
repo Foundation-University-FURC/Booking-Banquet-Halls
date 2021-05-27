@@ -89,17 +89,17 @@ const Halls = [
         {
             name : "A",
             capacity : "100-200",
-            price : "35000"
+            price : 35000
         }, 
         {
             name : "B",
             capacity : "100-200",
-            price : "25000"
+            price : 25000
         }, 
         {
             name : "C",
             capacity : "100-200",
-            price : "15000"
+            price : 15000
         }
     ],
     Menu : [ 
@@ -110,7 +110,7 @@ const Halls = [
                 "Chicken Qorma", 
                 "Rogni Naan"
             ],
-            price : "460"
+            price : 460
         }, 
         {
             name : "2",
@@ -122,7 +122,7 @@ const Halls = [
                 "Salaad", 
                 "Raita"
             ],
-            price : "600"
+            price : 600
         }, 
         {
             name : "3",
@@ -130,48 +130,48 @@ const Halls = [
                 "Beef Qorma", 
                 "Rogni Naan"
             ],
-            price : "360"
+            price : 360
         }
     ],
     Decoration : [ 
         {
             name : "D1",
             image : "../casblanca_banquet_hall_garrison/2019-01-24.jpg",
-            price : "9000"
+            price : 9000
         }, 
         {
             name : "D2",
             image : "../casblanca_banquet_hall_garrison/2019-05-20.jpg",
-            price : "10000"
+            price : 10000
         }, 
         {
             name : "D3",
             image : "../casblanca_banquet_hall_garrison/hall_2016g9XnlLsLZObHO6xY32ix0JzeLJui6koiCKteUDzB.jpg",
-            price : "7000"
+            price : 7000
         }, 
         {
             name : "D4",
             image : "../casblanca_banquet_hall_garrison/hall_2016qAnTp74fytJghc0gNMvBM1y1F9QsYOylDkr2FtCj.jpg",
-            price : "8000"
+            price : 8000
         }, 
         {
             name : "D5",
             image : "../casblanca_banquet_hall_garrison/hall_2016uqInWIIzY0FUbIUSUNvxMrUdoc7ciQ2y8pICvvVh.jpg",
-            price : "13000"
+            price : 13000
         }
     ],
     Other_Services : [ 
         {
             name : "Cooling",
-            price : "4000"
+            price : 4000
         }, 
         {
             name : "Music System",
-            price : "2500"
+            price : 2500
         }, 
         {
             name : "Heating",
-            price : "3500"
+            price : 3500
         }
     ],
     image : "/images/M_Hall1.jpg",
@@ -272,12 +272,12 @@ const Halls = [
         {
             name : "X",
             capacity : "100-200",
-            price : "35000"
+            price : 35000
         }, 
         {
             name : "Y",
             capacity : "100-200",
-            price : "25000"
+            price : 25000
         }
     ],
     Menu : [ 
@@ -288,7 +288,7 @@ const Halls = [
                 "Chicken Qorma", 
                 "Rogni Naan"
             ],
-            price : "400"
+            price : 400
         }, 
         {
             name : "2",
@@ -298,7 +298,7 @@ const Halls = [
                 "Rogni Naan", 
                 "Biriyani"
             ],
-            price : "450"
+            price : 450
         }, 
         {
             name : "3",
@@ -306,43 +306,43 @@ const Halls = [
                 "Beef Qorma", 
                 "Rogni Naan"
             ],
-            price : "360"
+            price : 360
         }
     ],
     Decoration : [ 
         {
             name : "D1",
             image : "../casblanca_banquet_hall_garrison/2019-01-24.jpg",
-            price : "9000"
+            price : 9000
         }, 
         {
             name : "D2",
             image : "../casblanca_banquet_hall_garrison/2019-05-20.jpg",
-            price : "10000"
+            price : 10000
         }, 
         {
             name : "D3",
             image : "../casblanca_banquet_hall_garrison/hall_2016g9XnlLsLZObHO6xY32ix0JzeLJui6koiCKteUDzB.jpg",
-            price : "7000"
+            price : 7000
         }, 
         {
             name : "D4",
             image : "../casblanca_banquet_hall_garrison/hall_2016qAnTp74fytJghc0gNMvBM1y1F9QsYOylDkr2FtCj.jpg",
-            price : "8000"
+            price : 8000
         }
     ],
     Other_Services : [ 
         {
             name : "Cooling",
-            price : "4000"
+            price : 4000
         }, 
         {
             name : "Music System",
-            price : "2500"
+            price : 2500
         }, 
         {
             name : "Heating",
-            price : "3500"
+            price : 3500
         }
     ],
     image : "/uploads\\1618783306416.jpg",
@@ -443,12 +443,12 @@ const Halls = [
         {
             name : "X",
             capacity : "100-200",
-            price : "35000"
+            price : 35000
         }, 
         {
             name : "Y",
             capacity : "100-200",
-            price : "25000"
+            price : 25000
         }
     ],
     Menu : [ 
@@ -459,7 +459,7 @@ const Halls = [
                 "Chicken Qorma", 
                 "Rogni Naan"
             ],
-            price : "400"
+            price : 400
         }, 
         {
             name : "2",
@@ -469,7 +469,7 @@ const Halls = [
                 "Rogni Naan", 
                 "Biriyani"
             ],
-            price : "450"
+            price : 450
         }, 
         {
             name : "3",
@@ -477,43 +477,43 @@ const Halls = [
                 "Beef Qorma", 
                 "Rogni Naan"
             ],
-            price : "360"
+            price : 360
         }
     ],
     Decoration : [ 
         {
             name : "D1",
             image  : "../casblanca_banquet_hall_garrison/2019-01-24.jpg",
-            pric  : "9000"
+            price  : 9000
         }, 
         {
             name : "D2",
             image : "../casblanca_banquet_hall_garrison/2019-05-20.jpg",
-            price : "10000"
+            price : 10000
         }, 
         {
             name : "D3",
             image : "../casblanca_banquet_hall_garrison/hall_2016g9XnlLsLZObHO6xY32ix0JzeLJui6koiCKteUDzB.jpg",
-            price : "7000"
+            price : 7000
         }, 
         {
             name : "D4",
             image : "../casblanca_banquet_hall_garrison/hall_2016qAnTp74fytJghc0gNMvBM1y1F9QsYOylDkr2FtCj.jpg",
-            price : "8000"
+            price : 8000
         }
     ],
     Other_Services : [ 
         {
             name : "Cooling",
-            price : "4000"
+            price : 4000
         }, 
         {
             name : "Music System",
-            price : "2500"
+            price : 2500
         }, 
         {
             name : "Heating",
-            price : "3500"
+            price : 3500
         }
     ],
     image : "/uploads\\1618783431756.jpg",

@@ -33,7 +33,7 @@ router.get('/seed',asysncHandler(async(req,res)=>{
 router.get('/seeds',asysncHandler(async(req,res)=>{
 
     const createdMHall =await marriage_hall.insertMany({Mhall})
-    res.json({createdMHall})
+    res.send({createdMHall})
 }))
 
 
@@ -49,9 +49,9 @@ router.get('/lists', asysncHandler( async (req,res)=>{
     const marriageHalls = await marriage_hall.find({ ...ownerFilter,...nameFilter, ...locationFilter });
     if(marriageHalls){
 
-      res.json(marriageHalls)
+      res.send(marriageHalls)
     }else{
-      res.status(400).json({message: "Thee are No Marriage Hall"})
+      res.status(400).send({message: "There are No Marriage Hall"})
     }
 }))
 
@@ -60,9 +60,9 @@ router.get('/lists', asysncHandler( async (req,res)=>{
 router.get('/lists/:id', asysncHandler( async (req,res)=>{
     const data1 = await marriage_hall.findById(req.params.id);
     if(data1){ 
-        res.json(data1)
+        res.send(data1)
     }else{
-        res.status(400).json({message: "Marriage Hall not Found"})
+        res.status(400).send({message: "Marriage Hall not Found"})
     }
 }))
 
@@ -77,9 +77,9 @@ router.get('/clists', asysncHandler( async (req,res)=>{
 router.get('/clists/:id', asysncHandler( async (req,res)=>{
     const data = await car_rental.findById(req.params.id);
     if(data){ 
-        res.json(data)
+        res.send(data)
     }else{
-        res.status(400).json({message: "Rent a Car not Found"})
+        res.status(400).send({message: "Rent a Car not Found"})
     }
 }))
 
@@ -87,32 +87,32 @@ router.get('/clists/:id', asysncHandler( async (req,res)=>{
 //get Route for all Lists
 router.get('/cardlists', asysncHandler( async (req,res)=>{
     const cards = await design_card.find({});
-    res.json(cards)
+    res.send(cards)
 }))
 
 //get Route for single data
 router.get('/cardlists/:id', asysncHandler( async (req,res)=>{
     const data = await design_card.findById(req.params.id);
     if(data){ 
-        res.json(data)
+        res.send(data)
     }else{
-        res.status(400).json({message: "Cards services not Found"})
+        res.status(400).send({message: "Cards services not Found"})
     }
 }))
 
 //get Route for all Lists
 router.get('/plists', asysncHandler( async (req,res)=>{
     const grapher = await photographers.find({});
-    res.json(grapher)
+    res.send(grapher)
 }))
 
 //get Route for single data
 router.get('/plists/:id', asysncHandler( async (req,res)=>{
     const data = await photographers.findById(req.params.id);
     if(data){ 
-        res.json(data)
+        res.send(data)
     }else{
-        res.status(400).json({message: "photographers services not Found"})
+        res.status(400).send({message: "photographers services not Found"})
     }
 }))
 

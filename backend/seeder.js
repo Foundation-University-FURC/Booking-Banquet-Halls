@@ -31,18 +31,18 @@ const importData = async()=>{
         // const createUser= await User.insertMany(users)
         // const adminUser=  createUser[0]._id
         // const sampleData=  Halls_list.map((list)=>{
-            //     return {...list, user: adminUser}
-            // })
-            //   const data =  await marriage_hall.insertMany(sampleData)
-            // console.log("Data Imported",data)
+        //         return {...list, user: adminUser}
+        //     })
+        // const data =  await marriage_hall.insertMany(sampleData)
+        // console.log("Data Imported",data)
         
-            //For rent a car services
-        await car_rental.deleteMany()
-        const carData=  car_list.map((list)=>{
-                return {...list}
-            })
-              const data =  await car_rental.insertMany(carData)
-            console.log("Data Imported",data)
+            // For rent a car services
+        // await car_rental.deleteMany()
+        // const carData=  car_list.map((list)=>{
+        //         return {...list}
+        //     })
+        //       const data =  await car_rental.insertMany(carData)
+        //     console.log("Data Imported",data)
 
 
             //For rent a card design services
