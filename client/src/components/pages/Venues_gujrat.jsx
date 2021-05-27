@@ -12,13 +12,19 @@ import {hallList} from '../../actions/HallsActions'
 import SearchBox from "./SearchBox";
 
 const Venues_gujrat = (props) =>{
-    const dispatch = useDispatch()
-    const HallsList= useSelector((state) => state.HallsList)
-    const {loading,error, data} = HallsList
+   
+   
     // const [MHalls, setHalls] = useState([])
     // const [loading, setLoading] = useState(false)
     // const [error, setError]= useState(false)
+    const HallsList = useSelector((state) => state.HallsList)
+    const {loading,error, data} = HallsList
+
+    const dispatch = useDispatch()
     useEffect(()=>{
+
+
+      dispatch(hallList({}))
         // const fetch_MHalls = async ()=>{
 
         //   try{
@@ -34,10 +40,11 @@ const Venues_gujrat = (props) =>{
         // };
         // fetch_MHalls()
 
-        dispatch(hallList({}))
+       
 
     },[dispatch]);
     // console.log("Data is:" + MHalls)
+
 
     const [name, setName] = useState('');
     const [location, setLocation] = useState('');

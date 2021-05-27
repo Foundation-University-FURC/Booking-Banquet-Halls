@@ -24,20 +24,15 @@ const __dirnam = path.resolve();
 app.use('/uploads', express.static(path.join(__dirnam, '/uploads')));
 
 
-app.use(express.static(path.join(__dirnam, '/client/build')));
-app.get('*', (req, res) =>
-      res.sendFile(path.join(__dirnam, '/client/build/index.html'))
-        );
+// app.use(express.static(path.join(__dirnam, '/client/build')));
+// app.get('*', (req, res) =>
+//       res.sendFile(path.join(__dirnam, 'client','build','index.html'))
+//         );
 
-// "build": "cd client && npm install && npm run build",
-// "install-client": "cd client && npm install",
-// "heroku-postbuild": "npm run install-client && npm run build",
 
-// "engines": {"node": "12.4.0","npm": "6.9.0"}
-
-// app.get('/', (req,res)=>{
-//     res.send('<h1>Hello from Node Server Api</h1>')
-// })
+app.get('/', (req,res)=>{
+    res.send('<h1>Hello from Node Server Api</h1>')
+})
 
 app.use('/api',Route)
 app.use('/api/uploads',uploadRouter)
