@@ -23,10 +23,17 @@ app.use(express.urlencoded({extended: true}))
 const __dirnam = path.resolve();
 app.use('/uploads', express.static(path.join(__dirnam, '/uploads')));
 
-// app.use(express.static(path.join(__dirnam, '/client/build')));
-// app.get('*', (req, res) =>
-//   res.sendFile(path.join(__dirnam, '/client/build/index.html'))
-// );
+if(process.env.NODE_ENV==='production'){
+app.use(express.static(path.join(__dirnam, '/client/build')));
+app.get('*', (req, res) =>
+  res.sendFile(path.join(__dirnam, '/client/build/index.html'))
+);
+}else{
+    app.get('/',(req,res)=>{
+        res.send("Api Running");
+    });
+}
+
 
 // "build": "cd client && npm install && npm run build",
 // "install-client": "cd client && npm install",

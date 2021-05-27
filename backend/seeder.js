@@ -37,15 +37,15 @@ const importData = async()=>{
             // console.log("Data Imported",data)
         
             //For rent a car services
-        // await car_rental.deleteMany()
-        // const carData=  car_list.map((list)=>{
-        //         return {...list}
-        //     })
-        //       const data =  await car_rental.insertMany(carData)
-        //     console.log("Data Imported",data)
+        await car_rental.deleteMany()
+        const carData=  car_list.map((list)=>{
+                return {...list}
+            })
+              const data =  await car_rental.insertMany(carData)
+            console.log("Data Imported",data)
 
 
-            //For rent a car services
+            //For rent a card design services
         // await card_design.deleteMany()
         // const cardData=  cards_list.map((list)=>{
         //         return {...list}
