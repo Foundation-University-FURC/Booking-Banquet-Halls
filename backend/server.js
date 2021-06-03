@@ -1,7 +1,7 @@
 
 const express = require('express')
-const http = require('http');
-const {Server} = require('socket.io');
+// const http = require('http');
+// const {Server} = require('socket.io');
 const Halls= require("./data/Halls")
 
 const dotenv = require('dotenv')
@@ -25,12 +25,6 @@ app.use('/uploads', express.static(path.join(__dirnam, '/uploads')));
 
 
 
-
-
-// app.get('/', (req,res)=>{
-//     res.send('<h1>Hello from Node Server Api</h1>')
-// })
-
 app.use('/api',Route)
 app.use('/api/uploads',uploadRouter)
 // app.use('/api',CarsRoute)
@@ -40,8 +34,6 @@ const port = process.env.PORT || 5000
 
 
 
-
-    
 
 
 // const httpServer = http.Server(app);
@@ -119,6 +111,11 @@ const port = process.env.PORT || 5000
 // httpServer.listen(port, ()=>{
 //     console.log('server is running at port no '+ port)
 // })
+
+// app.get('/', (req,res)=>{
+//     res.send('<h1>Hello from Node Server Api</h1>')
+// })
+
 
 app.use(express.static(path.join(__dirnam, '/client/build')));
 app.get('*', (req, res) =>

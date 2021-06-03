@@ -44,12 +44,13 @@ export default function OrderList(props) {
       ) : error ? (
         <MessageBox varient="danger">{error}</MessageBox>
       ) : (
+        <div style={{overflowX:"auto"}}>
         <table className="table container mb-5">
           <thead>
             <tr>
-            <th>ID</th>
+            <th>NAME</th>
             <th>USER</th>
-              <th>DATE</th>
+              <th>EVENT DATE</th>
               <th>EVENT TYPE</th>
               <th>CREATED AT</th>
               <th>STATUS</th>
@@ -61,10 +62,12 @@ export default function OrderList(props) {
               <tr key={order._id}>
                 <td>{order.orderItems.map((val)=>(
                   <img className="circularimage" src= {val.image} alt="Marriage Hall Image" />
-                ))}&nbsp; <b>#{order._id}</b></td>
+                ))}&nbsp; <b> {order.orderItems.map(value=>(
+                  value.name
+                ))}</b></td>
                 <td>{order.user.name}</td>
                 <td>{order.orderItems.map((value)=>(
-                  value.date
+                  value.date.substring(0,10)
                 ))}</td>
                 <td>{order.orderItems.map((value)=>(
                   value.EventType
@@ -86,6 +89,7 @@ export default function OrderList(props) {
             ))}
           </tbody>
         </table>
+        </div>
       )}
 
       <Footer/>

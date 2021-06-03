@@ -26,19 +26,19 @@ function SearchBox(props) {
 <div className=" filter container mt-5">
 <form required= "true" onSubmit={submitHandler}>
 <div className="row padding">
-<div className="col-5 ">
-<label style={{fontStyle:"italic",fontWeight:"bolder"}} for="byname">Search By Name</label><br/>
+<div className="col-lg-5 col-md-4 col-sm-12">
+<label style={{fontStyle:"italic",fontWeight:"bolder", fontFamily:'Roboto Condensed sans-serif'}} for="byname">Search By Name</label><br/>
 <input className="filter-for-search" type="text" id="name" name="byname" placeholder="Enter Name" onChange={(e) => setName(e.target.value)} />
 </div>
 
-<div className="col-5">
+<div className="col-lg-5 col-md-4 col-sm-12">
 
-<label style={{fontStyle:"italic",fontWeight:"bolder"}} for="Location">Search By City Or Location</label><br/>
+<label style={{fontStyle:"italic",fontWeight:"bolder",fontFamily:'Roboto Condensed sans-serif'}} for="Location">Search By City Or Location</label><br/>
     <input className="filter-for-search" type="text" id="Location" name="bylocation" placeholder="Enter City Name or Location" onChange={(e) => setLocation(e.target.value)} />
 
 </div>
 
-<div className="col-2 my-4">
+<div className="col-lg-2 col-md-3 col-sm-12 my-4">
 
 {/* <input style={{fontStyle:"italic",fontWeight:"bolder"}} type="submit" value="Submit" className="for-filter-btn"/> */}
 <button className="for-filter-btn" style={{fontStyle:"italic",fontWeight:"bolder"}} type="submit">

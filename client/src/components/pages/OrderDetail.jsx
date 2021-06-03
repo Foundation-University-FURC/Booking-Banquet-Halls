@@ -52,12 +52,13 @@ const OrderDetail =(props)=> {
       ) : (
         <>
         
-          <h1 style={{textAlign:"center"}} className="fonttt">Order # {order._id}</h1>
+          <h1 style={{textAlign:"center"}} className="fonttt">Booking Details</h1>
           <div className="container mt-5">
           <div style={{border:"1px solid", borderRight:"1px solid"}} className="row padding mb-5">
-            <div style={{borderRight:"1px solid"}} className="col-6">
+            <div style={{borderRight:"1px solid"}} className="col-lg-6 col-md-6 col-sm-12">
             <h2 className="bInfo">Order Information</h2>
-            
+
+           
         {order.orderItems.map(val=>(
             <img style={{width:"100%"}} src= {val.image} /> 
          ))}
@@ -77,62 +78,61 @@ const OrderDetail =(props)=> {
           <MessageBox varient="danger">Not Accepted Yet</MessageBox>
             )}
        </div>
-          
-        <div className="container mt-3 mb-5">
-            
-        </div>
+           
           </div>
-          <div className="col-6">
+
+
+          <div className="col-lg-6 col-md-6 col-sm-12">
           <h2 className="bInfo">Order Summary</h2>
           <div className="row padding mt-3">
-          <div  className ="col-lg-6 fonttt">
-            <h4><b>Date:</b></h4>
-            <h4><b>Guests:</b></h4>
-            <h4><b>Shift:</b></h4>
-            <h4><b>Hall Name:</b></h4>
-            <h4><b>Menu Name:</b></h4>
-            <h4><b>Theme Name:</b></h4>
-            <h4><b>Services:</b></h4>
-            <h4><b>Sitting:</b></h4>
-            <h4><b>Style:</b></h4>
-            <h4><b>Event Type:</b></h4>
-            <h4><b>Any Suggestions:</b></h4>
+          <div  className ="col-lg-6 col-md-6 col-sm-12 fonttt">
+          <h4 className="BS-h4">Date:</h4>
+            <h4 className="BS-h4">Guests:</h4>
+            <h4 className="BS-h4">Shift:</h4>
+            <h4 className="BS-h4">Hall Name:</h4>
+            <h4 className="BS-h4">Menu Name:</h4>
+            <h4 className="BS-h4">Theme Name:</h4>
+            <h4 className="BS-h4">Services:</h4>
+            <h4 className="BS-h4">Sitting:</h4>
+            <h4 className="BS-h4">Style:</h4>
+            <h4 className="BS-h4">Event Type:</h4>
+            <h4 className="BS-h4">Any Suggestions:</h4>
 
           </div>
 
-          <div className ="col-lg-6 fonttt" > 
-            <h4>{order.orderItems.map((val)=>(
-              <li>  {val.date.substring(0,10)}</li>
+          <div className ="col-lg-6 col-md-6 col-sm-12 fonttt" > 
+            <h4 className="BS-4-center">{order.orderItems.map((val)=>(
+              <p>  {val.date.substring(0,10)}</p>
             ))}</h4>
-            <h4>{order.orderItems.map((val)=>(
-              <li>{val.Guests}</li>
+            <h4 className="BS-4-center">{order.orderItems.map((val)=>(
+              <p>{val.Guests}</p>
             ))}</h4>
-            <h4>{order.orderItems.map((val)=>(
-              <li>{val.Shift}</li>
+            <h4 className="BS-4-center">{order.orderItems.map((val)=>(
+              <p>{val.Shift}</p>
             ))}</h4>
-            <h4>{order.orderItems.map((val)=>(
-              <li>{val.hallName}</li>
+            <h4 className="BS-4-center">{order.orderItems.map((val)=>(
+              <p>{val.hallName}</p>
             ))}</h4>
-            <h4>{order.orderItems.map((val)=>(
-              <li>{val.Menu1}</li>
+            <h4 className="BS-4-center">{order.orderItems.map((val)=>(
+              <p>{val.Menu1}</p>
             ))}</h4>
-            <h4>{order.orderItems.map((val)=>(
-              <li>{val.Theme}</li>
+            <h4 className="BS-4-center">{order.orderItems.map((val)=>(
+              <p>{val.Theme}</p>
             ))}</h4>
-            <h4>{order.orderItems.map((val)=>(
-              <li>{val.Services}</li>
+            <h4 className="BS-4-center">{order.orderItems.map((val)=>(
+              <p>{val.Services}</p>
             ))}</h4>
-            <h4>{order.orderItems.map((val)=>(
-              <li>{val.Sitting}</li>
+            <h4 className="BS-4-center">{order.orderItems.map((val)=>(
+              <p>{val.Sitting}</p>
             ))}</h4>
-            <h4>{order.orderItems.map((val)=>(
-              <li>{val.style}</li>
+            <h4 className="BS-4-center">{order.orderItems.map((val)=>(
+              <p>{val.style}</p>
             ))}</h4>
-            <h4>{order.orderItems.map((val)=>(
-              <li>{val.EventType}</li>
+            <h4 className="BS-4-center">{order.orderItems.map((val)=>(
+              <p>{val.EventType}</p>
             ))}</h4>
-            <h4>{order.orderItems.map((val)=>(
-              <li>{val.Comments}</li>
+            <h4 className="BS-4-center">{order.orderItems.map((val)=>(
+              <p>{val.Comments}</p>
             ))}</h4>
           </div>
 

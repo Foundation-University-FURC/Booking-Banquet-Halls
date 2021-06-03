@@ -1,6 +1,6 @@
 import React from "react";
 import logo from "../images/logo5.png";
-import logo2 from "../images/logo2.png";
+import logo2 from "../images/logoNew_2.png";
 import img from "../images/marriage8.jfif";
 // import img4 from "../images/marriage10.jfif";
 import gif1 from "../images/wedding_023.gif";
@@ -55,7 +55,7 @@ const Navbar = (props) =>{
 </div>
 <div className="container-fluid mb-5">
 <div className="row padding">
-<div className="col-sm-12">
+{/* <div className="col-4 col-sm-12"> */}
 
 {
     Categories_content.map((val,i)=>{
@@ -67,7 +67,7 @@ const Navbar = (props) =>{
      })
  }
 
-</div>
+ {/* </div> */}
 
 </div>
 

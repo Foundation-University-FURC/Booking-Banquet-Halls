@@ -1,6 +1,6 @@
 import react from "react";
 // import img1 from "../src/images/explore.png";
-import logo from "../images/logo5.png";
+import logo from "../images/Logo_F.PNG";
 import FacebookIcon from '@material-ui/icons/Facebook';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import InstagramIcon from '@material-ui/icons/Instagram';
@@ -22,7 +22,7 @@ const Footer =()=>{
 <div className="col-lg-6">
 
 <div className="row padding">
-<div className="col-12">
+<div className="col-lg-12 col-md-12 col-sm-12 footerlogo">
 <img className="footerlogo" src={logo} alt="LOGO"></img>
 </div>
 <hr className="light"/>
@@ -73,35 +73,7 @@ EventHub is first online event booking engine of Pakistan, facilitating customer
 </div>
 
 </div>
-{/* <div className="col-md-4">
-<img className="footerlogo" src={logo}></img>
-<hr className="light"/>
-<p>555-555-5555</p>
-<p>myemail@email.com</p>
-<p>100 Street Name</p>
-<p>City, State, 44000</p>
 
-</div>
-
-<div className="col-md-4">
-<hr className="light" />
-<h4>Our Hours</h4>
-<hr className="light"/>
-<p>Monday: 9am - 5am</p>
-<p>Saturday: 10am - 4pm</p>
-<p>Sunday: Closed</p>
-
-</div>
-
-<div className="col-md-4">
-<hr className="light" />
-<h4>Services Area</h4>
-<hr className="light"/>
-<p>City,State,000000</p>
-<p>City,State,000000</p>
-<p>City,State,000000</p>
-<p>City,State,000000</p>
-</div> */}
 
 <p className="col-12">
 <hr className="light-100" />

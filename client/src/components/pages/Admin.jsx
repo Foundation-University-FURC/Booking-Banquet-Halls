@@ -6,25 +6,37 @@ const Admin = () => {
   return (
     <>
 
-      <div className="display my-5">
+      <div className ="container">
+        <div className="row padding">
+            <div className ="col-lg-6 col-md-6 col-sm-12">
+            <div className="display my-5">
         <div className="information">
           <h2 className="fonttt">Admin Dashboard </h2>
-          <p>
-            A good venue will serve as the best decision in making<br></br> the
-            whole ceremony more comfortable and enjoyable. And, when <br></br>it
-            comes to offering great spaces for wonderful occasions,<br></br>
+          <div>
+          <p className="container-fluid ml-2">
+            A good venue will serve as the best decision in making the
+            whole ceremony more comfortable and enjoyable. And, when it
+            comes to offering great spaces for wonderful occasions,
             Shree Ram Marriage Hall and Convention is a popular choice.
           </p>
-          <h6>
+          </div>
+          <p>
             Cell : <span>+92338978787</span>
-          </h6>
-          <h6>
+          </p>
+          <p>
             Timing : <span>12 to 10 PM </span>
-          </h6>
+          </p>
         </div>
-        <div className="imag">
-          <img src={img} width="500px"></img>
+            </div>
         </div>
+          <div className="col-lg-6 col-md-6 col-sm-12">
+          <div className="image-dash">
+          <img src={img} alt ="Dashboard image"></img>
+        </div>
+          </div> 
+
+      </div>
+      
       </div>
 
       <Footer />

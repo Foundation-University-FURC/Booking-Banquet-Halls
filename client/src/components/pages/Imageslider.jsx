@@ -3,7 +3,7 @@ import img1 from "../images/explore.png";
 import img2 from "../images/enquiry.png";
 import img3 from "../images/visit.png";
 import img4 from "../images/booking.png";
-import logo from "../images/logo2.png";
+import logo from "../images/logoNew_2.png";
 
 const Imageslider =()=>{
     return(

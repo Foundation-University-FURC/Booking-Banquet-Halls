@@ -19,11 +19,12 @@ export default function OrderHistory(props) {
       ) : error ? (
         <MessageBox variant="danger">{error}</MessageBox>
       ) : (
+        <div style={{overflowX:"auto"}}>
         <table className="table fonttt2">
           <thead>
             <tr>
-              <th>ID</th>
-              <th>DATE</th>
+              <th>NAME</th>
+              <th>EVENT DATE</th>
               <th>EVENT TYPE</th>
               <th>CREATED AT</th>
               <th>STATUS</th>
@@ -66,6 +67,7 @@ export default function OrderHistory(props) {
             ))}
           </tbody>
         </table>
+        </div>
       )}
     </div>
   );

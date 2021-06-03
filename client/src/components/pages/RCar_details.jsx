@@ -41,10 +41,10 @@ const RCar = ({match}) => {
 
         <div className="container mt-3">
             <div className="row padding">
-                <div className="col-lg-6 col-sm-12">
-                <img src={Rcar.image} height="400px" width="500px" />
+                <div className="col-lg-6 col-md-6 col-sm-12">
+                <img src={Rcar.image} height="100%" width="100%" />
                 </div>
-                <div className="col-lg-6 col-sm-12">
+                <div className="col-lg-6 col-md-6 col-sm-12">
                 <div className="container">
           <h4 style={{fontStyle:"italic",fontWeight:"bolder", textAlign:"center"}}>{Rcar.name}</h4>
           <p>

@@ -22,10 +22,11 @@ const Cities=()=>{
 </div>
 {/* <hr/> */}
 </div>
-<div className="row padding">
-<div className="col-sm-12">
+<div className ="container">
+<div className="row padding mt-5">
+{/* <div className="col-sm-12"> */}
 
-        <Slider {...settings}>
+        {/* <Slider {...settings}> */}
         {
     City_content.map((val,i)=>{
          return  <Categories
@@ -35,9 +36,10 @@ const Cities=()=>{
 />
      })
  }
-        </Slider>
-</div>
+        {/* </Slider> */}
+ {/* </div> */}
 
+</div>
 </div>
 </div>
 

@@ -52,28 +52,28 @@ const { loading, success, error, order } = orderCreate;
 
 //  services for total bill
 
-const hall_price = (cart.cartItems.map((val)=>( 
+var hall_price = (cart.cartItems.map((val)=>( 
   val.HallName.filter((val)=>val.name===urldata.hallName).map(val=>(
 <p>{val.price}</p>
 ))
 )))
 
 
-const menu_price =  (cart.cartItems.map((val)=>(
+var menu_price =  (cart.cartItems.map((val)=>(
 val.Menu.filter((val)=>val.name===urldata.Menu1).map(val=>(
 <p>{val.price * urldata.Guests}</p>
 ))
 
 )))
 
-const theme_price =  (cart.cartItems.map((val)=>(
+var theme_price =  (cart.cartItems.map((val)=>(
 val.Decoration.filter((val)=>val.name===urldata.Theme).map(val=>(
 <p>{val.price}</p>
 ))
 
 )))
 
-const services_price =  (cart.cartItems.map((val)=>(
+var services_price =  (cart.cartItems.map((val)=>(
 val.Other_Services.filter((val)=>val.name===urldata.Services).map(val=>(
 <p>{val.price}</p>
 ))
@@ -81,6 +81,7 @@ val.Other_Services.filter((val)=>val.name===urldata.Services).map(val=>(
 )))
 
 
+const total = services_price + menu_price + hall_price +theme_price;
 
     const dispatch = useDispatch();
     const placeOrderHandler = () => {
@@ -110,8 +111,10 @@ val.Other_Services.filter((val)=>val.name===urldata.Services).map(val=>(
    const name = cart.cartItems.map(val=>(
      val.name
    ))
-  
-   const total = 287000;
+
+
+ 
+    const Total = 287000;
 
     const classes = useStyles();
     
@@ -121,7 +124,7 @@ val.Other_Services.filter((val)=>val.name===urldata.Services).map(val=>(
           <h1 style={{textAlign:"center"}} className="fonttt">Welcome to booking page</h1>
           <div className="container mt-5">
           <div style={{border:"1px solid", borderRight:"1px solid"}} className="row padding mb-5">
-            <div style={{borderRight:"1px solid"}} className="col-6">
+            <div style={{borderRight:"1px solid"}} className="col-lg-6 col-md-6 col-sm-12">
             <h2 className="bInfo">Billing Informaition</h2>
             
           
@@ -149,8 +152,8 @@ val.Other_Services.filter((val)=>val.name===urldata.Services).map(val=>(
                   <p>Theme {urldata.Theme}</p>
                   <p> {urldata.Services}</p>
                   <hr/>
-                  <h5><b><strong>In Advance Bill</strong></b></h5>
-                  <h5><b> <strong>Total Bill</strong></b></h5>
+                  <h5><b><strong>Advance Bill</strong></b></h5>
+                  <h5><b> <strong>Total Bill +Tax</strong></b></h5>
                 <hr/>
                 </div>
                 <div className="col-4">
@@ -160,8 +163,8 @@ val.Other_Services.filter((val)=>val.name===urldata.Services).map(val=>(
                   <p>{theme_price}</p>
                   <p>{services_price}</p>
                   <hr/>
-                  <p>{total/2}</p>
-                  <p>{total}</p>
+                  <p>{Total/2}</p>
+                  <p>{Total}</p>
                   <hr/>
                 </div>
               </div>
@@ -180,37 +183,37 @@ val.Other_Services.filter((val)=>val.name===urldata.Services).map(val=>(
     </Card>
           </div>
           </div>
-          <div className="col-6">
+          <div className="col-lg-6 col-md-6 col-sm-12">
           <h2 className="bInfo">Booking Summary</h2>
           <div className="row padding mt-3">
-          <div  className ="col-lg-6 fonttt">
-            <h4>Date:</h4>
-            <h4>Guests:</h4>
-            <h4>Shift:</h4>
-            <h4>Hall Name:</h4>
-            <h4>Menu Name:</h4>
-            <h4>Theme Name:</h4>
-            <h4>Services:</h4>
-            <h4>Sitting:</h4>
-            <h4>Style:</h4>
-            <h4>Event Type:</h4>
-            <h4>Any Suggestions:</h4>
+          <div  className ="col-lg-6 col-md-6 col-sm-12  fonttt">
+            <h4 className="BS-h4">Date:</h4>
+            <h4 className="BS-h4">Guests:</h4>
+            <h4 className="BS-h4">Shift:</h4>
+            <h4 className="BS-h4">Hall Name:</h4>
+            <h4 className="BS-h4">Menu Name:</h4>
+            <h4 className="BS-h4">Theme Name:</h4>
+            <h4 className="BS-h4">Services:</h4>
+            <h4 className="BS-h4">Sitting:</h4>
+            <h4 className="BS-h4">Style:</h4>
+            <h4 className="BS-h4">Event Type:</h4>
+            <h4 className="BS-h4">Any Suggestions:</h4>
 
           </div>
 
 {/* Changes:  urldata -> cart1 */}
-          <div className ="col-lg-6 fonttt" >
-            <h4>{cart1.date}</h4>
-            <h4>{cart1.Guests}</h4>
-            <h4>{cart1.Shift}</h4>
-            <h4>{cart1.hallName}</h4>
-            <h4>{cart1.Menu1}</h4>
-            <h4>{cart1.Theme}</h4>
-            <h4>{cart1.Services}</h4>
-            <h4>{cart1.Sitting}</h4>
-            <h4>{cart1.style}</h4>
-            <h4>{cart1.EventType}</h4>
-            <h4>{cart1.Comments}</h4>
+          <div className ="col-lg-6 col-md-6 col-sm-12 fonttt" >
+            <h4 className="BS-4-center">{cart1.date}</h4>
+            <h4 className="BS-4-center">{cart1.Guests}</h4>
+            <h4 className="BS-4-center">{cart1.Shift}</h4>
+            <h4 className="BS-4-center">{cart1.hallName}</h4>
+            <h4 className="BS-4-center">{cart1.Menu1}</h4>
+            <h4 className="BS-4-center">{cart1.Theme}</h4>
+            <h4 className="BS-4-center">{cart1.Services}</h4>
+            <h4 className="BS-4-center">{cart1.Sitting}</h4>
+            <h4 className="BS-4-center">{cart1.style}</h4>
+            <h4 className="BS-4-center">{cart1.EventType}</h4>
+            <h4 className="BS-4-center">{cart1.Comments}</h4>
 
           </div>
 

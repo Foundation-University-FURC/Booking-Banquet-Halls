@@ -165,7 +165,7 @@ const Hall_Details = (props) => {
 <div className="container my-5">
 <div className="row padding">
 <div className="col-lg-9 col-md-12 col-sm-12 detB" >
-<img style={{width:"100%", height:"45%"}} src={data1.image} alt="Marriage Hall image"></img>
+<img className="MBE-image" style={{width:"100%", height:"45%"}} src={data1.image} alt="Marriage Hall image"></img>
 <br/>
 <h1 style={{fontStyle:"italic",fontWeight:"bolder",textAlign:"center"}}>{data1.name}</h1>
 <p  style={{fontStyle:"italic",fontWeight:"normal"}}><HomeIcon />  {data1.location}</p>
@@ -177,14 +177,14 @@ const Hall_Details = (props) => {
 <h1 style={{fontStyle:"italic",fontWeight:"bolder",textAlign:"center"}}>Description</h1>
 <p style={{fontStyle:"italic",fontWeight:"normal"}}> {data1.About}</p>
 
-<h1 style={{fontStyle:"italic",fontWeight:"bolder",textAlign:"center"}}>More About EventHub.PK</h1>
-<p style={{fontStyle:"italic",fontWeight:"normal"}}> {data1.description}</p>
+<h1 className="MBE" style={{fontStyle:"italic",fontWeight:"bolder",textAlign:"center"}}>More About EventHub.PK</h1>
+<p className="MBE" style={{fontStyle:"italic",fontWeight:"normal"}}> {data1.description}</p>
 {/* <hr/> */}
 </div>
 
 {/* start */}
 
-<div className="col-lg-3 col-md-12 col-sm-12">
+<div className="col-lg-3 col-md-12 col-sm-12 mt-5">
 <div className="container mx-3 detail-form">
 <div className="row padding">
 
@@ -268,10 +268,10 @@ const Hall_Details = (props) => {
 
 <div className="container my-4">
 <div className="row padding">
-<hr/>
+<hr className= "MBE-hr" />
 <h1 style={{textAlign:"center",fontFamily:"cursive"}}>Booking Proceess</h1>
 <h5 style={{textAlign:"center",fontFamily:"cursive"}}>Please Fill the Form For Booking...</h5>
-<hr/>
+<hr className= "MBE-hr"/>
 </div>
 </div>
 
@@ -319,16 +319,16 @@ const Hall_Details = (props) => {
 {/* step 2 Start */}
 
 <div className="container menu-card">
-    
     {
         data1.Menu.map((val,key)=>(
-          <div key={key} className="row">
-          <div className="card" style={{width: "15rem"}}>
+  <div className="row">
+  <div key={key} className="col-lg-4 col-md-12 col-sm-12">
+  <div className="card MBE-card" style={{width: "12rem"}}>
   <div className="card-body">
     <ul>
     <h5 className="card-title"  style={{backgroundColor:"orange"}}>Menu {val.name}</h5>
     {
-      val.Dish.map((val1,i)=>(
+      val.Dish.map((val1,i)=>( 
         <li key={i}><i>{val1}</i></li>
       ))
     }
@@ -336,6 +336,7 @@ const Hall_Details = (props) => {
     <hr/>
        <sapn><h5>PKR {val.price}./Head</h5></sapn>
        <hr/>
+  </div>
   </div>
 </div>
 
@@ -406,7 +407,7 @@ const Hall_Details = (props) => {
 <div className="col-lg-4 col-12 col-md-12 col-sm-12">
 <div className="container mx-5 detail-form1">
 <div className="row padding">
-<div className= "col-md-6 col-12 mx-auto">
+<div className= "MBE-form col-12 col-md-6 mx-auto">
 <h3 style={{color:"Yellow"}}>Booking Details</h3>
 <form onSubmit={submitHandler}>
 {/* <div>

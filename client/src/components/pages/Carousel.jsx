@@ -18,7 +18,7 @@ const Carousel1=()=>{
 <div className="container-main">
 <div className="row">
 <div className="col-sm-12">
-<h1 className="cheese-main text-center" >EventHub Booking</h1>
+<h1 className="cheese-main text-center">EventHub Booking</h1>
 <p className="scroll-main" > Booking Memories</p>
 </div>
 </div>

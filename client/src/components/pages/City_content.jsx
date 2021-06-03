@@ -11,10 +11,10 @@ const City_content = [
       text1 : 'Gujrat',    
       image1: img6,
     },
-    {
-      text1 : 'Jehlam',
-      image1: img7,
-    },
+    // {
+    //   text1 : 'Jehlam',
+    //   image1: img7,
+    // },
     
     {
       text1 : 'Lahore',
@@ -24,10 +24,10 @@ const City_content = [
       text1 : 'Rawalpindi',
       image1: img9,
     },
-    {
-      text1 : 'Islamabad',
-      image1: img10,
-    }
+    // {
+    //   text1 : 'Islamabad',
+    //   image1: img10,
+    // }
   ];
 
 

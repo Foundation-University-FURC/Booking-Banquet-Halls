@@ -49,14 +49,17 @@ function App() {
   return (
    <>
 
+
 <Fnavbar />
 
    <Switch>
  
 
-   <Route  path = '/AdminDashboard' component={Admin} />
- <Route exact path='/signin' component={Signin}/>
-<Route exact path='/signup' component={Signup}/>
+    <Route  path = '/AdminDashboard' component={Admin} />
+    <Route  path='/signin' component={Signin}/>
+    <Route  path='/signup' component={Signup}/>
+
+   
 {/* <Route exact path='/Orders' component={Orders}/> */}
 {
   userInfo && userInfo.isAdmin?(
@@ -97,7 +100,7 @@ function App() {
 <Route path="/search/name/:name?" component={Search} exact ></Route>
 <Route path="/search/name//location/:location?" component={Search} exact></Route>
 
-<AdminRoute path="/support" component={Support}></AdminRoute>
+{/* <AdminRoute path="/support" component={Support}></AdminRoute> */}
 
 <div>
             <Route

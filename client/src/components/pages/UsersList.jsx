@@ -45,6 +45,7 @@ export default function UsersList(props) {
       ) : error ? (
         <MessageBox varient="danger">{error}</MessageBox>
       ) : (
+        <div style={{overflowX:"auto"}}>
         <table className="table container mb-5">
           <thead>
             <tr>
@@ -73,6 +74,7 @@ export default function UsersList(props) {
             ))}
           </tbody>
         </table>
+        </div>
       )}
 
       <Footer/>

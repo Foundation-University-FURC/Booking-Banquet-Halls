@@ -59,7 +59,7 @@ const hallDelete = useSelector((state) => state.hallDelete);
       <>
     <div className=" container my-5">
       <h1 className="fonttt" style={{textAlign:"center"}}>Marriage Halls Lists</h1>
-      <div className="row mb-3">
+      <div className="row mb-3 HL-button">
         <button style={{width:"150px",marginLeft:"85.5%"}} type="button" className="btn btn-info" onClick={createHandler}>
           <b>+ </b>Marriage Hall
         </button>
@@ -75,6 +75,7 @@ const hallDelete = useSelector((state) => state.hallDelete);
       ) : error ? (
         <MessageBox varient="danger">{error}</MessageBox>
       ) : (
+        <div style={{overflowX:"auto"}}>
         <table className="table">
           <thead>
             <tr>
@@ -125,6 +126,7 @@ const hallDelete = useSelector((state) => state.hallDelete);
             ))}
           </tbody>
         </table>
+        </div>
       )}
     </div>
     <Footer /> 
