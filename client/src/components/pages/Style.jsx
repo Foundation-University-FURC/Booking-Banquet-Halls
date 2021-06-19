@@ -39,7 +39,7 @@ const Style = () => {
 <h2> Wedding Dinner</h2>
 <p>
 Duis aute irure dolor reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.Lorem Duis aute irure dolor reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-<h4> <span><EventIcon fontSize="small" style={{color:"white"}}></EventIcon></span> March 20 2017</h4>
+<h4> <span><EventIcon fontSize="small" style={{color:"white"}}></EventIcon></span> March 20 2021</h4>
 <h4> <span><AccessTimeIcon fontSize="small" style={{color:"white"}}></AccessTimeIcon></span> 12.00pm to 2.00pm</h4>
 
 </div>
@@ -57,7 +57,7 @@ Duis aute irure dolor reprehenderit in voluptate velit esse cillum dolore eu fug
 <p>
 Duis aute irure dolor reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.Lorem Duis aute irure dolor reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
 </p>
-<h4> <span><EventIcon fontSize="small" style={{color:"white"}}></EventIcon></span> March 20 2017</h4>
+<h4> <span><EventIcon fontSize="small" style={{color:"white"}}></EventIcon></span> March 20 2021</h4>
 <h4>  <span><AccessTimeIcon fontSize="small" style={{color:"white"}}></AccessTimeIcon></span> 10.00am to 12.00pm</h4>
 </div>
 

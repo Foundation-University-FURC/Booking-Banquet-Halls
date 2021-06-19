@@ -33,9 +33,28 @@ import {
   USER_DELETE_REQUEST,
   USER_DELETE_RESET,
   USER_DELETE_SUCCESS,
+  USER_FORGET_REQUEST,
+  USER_FORGET_SUCCESS,
+  USER_FORGET_FAIL,
 
   } from '../constants/userConstants';
   
+  export const userForgetReducer = (state = {}, action) => {
+    switch (action.type) {
+      case USER_FORGET_REQUEST:
+        return { loading: true };
+      case USER_FORGET_SUCCESS:
+        return { loading: false, user: action.payload };
+      case USER_FORGET_FAIL:
+        return { loading: false, error: action.payload };
+      // case USER_SIGNOUT:
+      //   return {};
+      default:
+        return state;
+    }
+  }
+
+
   export const userSigninReducer = (state = {}, action) => {
     switch (action.type) {
       case USER_SIGNIN_REQUEST:
@@ -68,7 +87,7 @@ import {
 
 
 
-  export const userDetailsReducer = (state = { loading: true }, action) => {
+  export const userDetailsReducer = (state = { loading:true }, action) => {
     switch (action.type) {
       case USER_DETAILS_REQUEST:
         return { loading: true };
@@ -77,7 +96,7 @@ import {
       case USER_DETAILS_FAIL:
         return { loading: false, error: action.payload };
         case USER_DETAILS_RESET:
-          return { loading: true };
+          return { loading:true };
       default:
         return state;
     }
@@ -100,7 +119,7 @@ import {
   };
 
 
-  export const userListReducer = (state = { loading: true }, action) => {
+  export const userListReducer = (state = { loading:true }, action) => {
     switch (action.type) {
       case USER_LIST_REQUEST:
         return { loading: true };

@@ -1,15 +1,17 @@
 import React, { useEffect } from 'react';
-
+import { NavLink } from "react-router-dom";
 import LoadingBox from "./LoadingBox";
 import MessageBox from "./MessageBox";
 import {useDispatch, useSelector } from "react-redux";
 import {hallList,createHall,deleteHall} from '../../actions/HallsActions'
 import { HALL_CREATE_RESET,HALL_DELETE_RESET, } from '../../constants/HallsConstant';
 import Footer from "./Footer"
+import Footer2 from './Footer2';
+import { signout } from '../../actions/userActions';
 
 export default function HallsList(props) {
   const ownerMode = props.match.path.indexOf('/owner') >= 0;
- 
+
     const HallsList= useSelector((state) => state.HallsList)
     const {loading,error, data} = HallsList
 
@@ -51,12 +53,31 @@ const hallDelete = useSelector((state) => state.hallDelete);
     }
 
   };
+
   const createHandler = () => {
     dispatch(createHall());
   };
 
+
+  const signoutHandler = ()=>{
+    dispatch(signout())
+}
   return (
       <>
+
+{
+  userInfo && userInfo.isAdmin &&(
+<div id="mySidenav_dashboard" className="sidenav_dashboard">
+  {/* <NavLink className="Dashboard_a" to="/" id="Dashboard"><i className="fas fa-clipboard-list"></i> Dasher</NavLink> */}
+  <NavLink className="Dashboard_a" to="/Myprofile" id="My_Profile"><i className="fas fa-user-alt"></i> Profile</NavLink>
+  <NavLink className="Dashboard_a" to="/HallsList" id="Halls_List"><i className="fas fa-th-list"></i> Halls</NavLink>
+  <NavLink className="Dashboard_a" to="/orderlist" id="Orders_List"><i className="fas fa-tasks"></i> Orders</NavLink>
+  <NavLink className="Dashboard_a" to="/userlist" id="Users_List"><i className="fas fa-users"></i> Users</NavLink>
+  <NavLink className="Dashboard_a" to="/signin" id="SignOut_Dashboard" onClick={signoutHandler} ><i className="fas fa-sign-out-alt"></i> Logout</NavLink>
+</div>
+  )
+}
+
     <div className=" container my-5">
       <h1 className="fonttt" style={{textAlign:"center"}}>Marriage Halls Lists</h1>
       <div className="row mb-3 HL-button">
@@ -75,11 +96,11 @@ const hallDelete = useSelector((state) => state.hallDelete);
       ) : error ? (
         <MessageBox varient="danger">{error}</MessageBox>
       ) : (
-        <div style={{overflowX:"auto"}}>
+        <div style={{overflowX:"auto"}} className="fonttt">
         <table className="table">
           <thead>
             <tr>
-              <th>ID</th>
+              {/* <th>ID</th> */}
               <th>NAME</th>
               <th>PRICE</th>
               <th>Location</th>
@@ -92,8 +113,8 @@ const hallDelete = useSelector((state) => state.hallDelete);
           <tbody>
             {data.map((data) => (
               <tr key={data._id}>
-                <td><img className="circularimage" src={data.image} alt="image" /><b>#{data._id}</b></td>
-                <td>{data.name}</td>
+                <td><img className="circularimage" src={data.image} alt="image" /><b><span>{data.name}</span></b></td>
+                {/* <td>{data.name}</td> */}
                 <td>{data.price}</td>
                 <td>{data.location}</td>
                 <td>{data.rating}</td>
@@ -129,7 +150,7 @@ const hallDelete = useSelector((state) => state.hallDelete);
         </div>
       )}
     </div>
-    <Footer /> 
+    <Footer2 /> 
    </>
   );
 }

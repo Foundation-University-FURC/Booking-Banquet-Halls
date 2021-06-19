@@ -7,37 +7,80 @@ import { USER_DETAILS_RESET } from "../../constants/userConstants";
 import axios from "axios";
 import Carousel_why from "./Carousel_why";
 import Footer2 from './Footer2';
+import PhoneIcon from '@material-ui/icons/Phone';
+import { BarChart, CartesianGrid, XAxis, YAxis, Bar} from 'recharts';
+import { PieChart, Pie, Sector, Cell, ResponsiveContainer } from 'recharts';
 
 
-const Admin = () => {
+const OwnerDashboard = () => {
 
   const dispatch = useDispatch()
   const signoutHandler = ()=>{
           dispatch(signout())
   }
 
+  const userSignin = useSelector(state => state.userSignin);
+  const {userInfo} = userSignin;
+  var ownerId= userInfo._id;
+
+
   const [users, setUsers] = useState(0)
   const [orders, setOrders] = useState(0)
   const [halls, setHalls] = useState(0)
   const [earnings, setEarnings] = useState(0)
-  // const [pendings, setPendings] = useState(0)
+  const [pendings, setPendings] = useState(0)
  
+  const data = [
+    
+    { 
+        heading: "Pendings",
+        value: pendings,
+      },
+    {
+        heading: "Booking Halls",
+      value: orders,
+    },{
+        heading: "MHalls",
+      value: halls,
+    }, 
+    { 
+        heading: "Total Earnings",
+        value: earnings,
+      },
+  ]
+  
+
+
+  const data01 = [
+    { name: 'Pendings', value: pendings },
+    { name: 'Booking Halls', value: orders }
+  ];
+  const data02 = [
+    { name: 'Marriage Halls', value: halls },
+    { name: 'Eranings', value: earnings },
+  ];
+  
+
+
   useEffect(() => {
 
-    const fetchusers = async ()=>{
-      try {
-        const {data} = await axios.get('/api/user-count')
-        setUsers(data);
-        console.log("data is: " + data)
-        console.log("data issss: " + users)
-      } catch (error) {
-        console.log(error);
-      }
+
+    
+  //   const fetchusers = async ()=>{
+  //     try {
+  //       const {data} = await axios.get('/api/user-count')
+  //       setUsers(data);
+  //       console.log("data is: " + data)
+  //       console.log("data issss: " + users)
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
      
-  }
+  // }
     const fetchorders = async ()=>{
       try {
-        const {data} = await axios.get('/api/order-count')
+       
+        const {data} = await axios.get('/api/order-count-owner',{params: {ownerId}});
         setOrders(data);
         console.log("data is: " + data)
         console.log("data issss: " + users)
@@ -48,7 +91,8 @@ const Admin = () => {
   }
     const fetchhalls = async ()=>{
       try {
-        const {data} = await axios.get('/api/hall-count')
+        
+        const {data} = await axios.get('/api/hall-count-owner',{params:{ownerId}})
         setHalls(data);
         console.log("data is: " + data)
         console.log("data issss: " + users)
@@ -60,7 +104,7 @@ const Admin = () => {
 
     const fetchearning = async ()=>{
       try {
-        const {data} = await axios.get('/api/earning-count')
+        const {data} = await axios.get('/api/earning-count-owner',{params:{ownerId}})
         setEarnings(data);
         console.log("data is: " + data)
         console.log("data issss: " + users)
@@ -70,23 +114,24 @@ const Admin = () => {
      
   }
 
-  //   const fetchpending = async ()=>{
-  //     try {
-  //       const {data} = await axios.get('/api/pending-count')
-  //       setPendings(data);
-  //       console.log("data is: " + data)
-  //       console.log("data issss: " + users)
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
+    const fetchpending = async ()=>{
+      try {
+        const {data} = await axios.get('/api/pending-count-owner',{params:{ownerId}})
+        setPendings(data);
+        console.log("data is: " + data)
+        console.log("data issss: " + users)
+      } catch (error) {
+        console.log(error);
+      }
      
-  // }
+  }
   
-  fetchusers()
+  // fetchusers()
   fetchorders()
   fetchhalls()
   fetchearning()
-  // fetchpending()
+  fetchpending()
+
   
   }, []);
 
@@ -95,12 +140,13 @@ const Admin = () => {
     <>
 
 <div id="mySidenav_dashboard" className="sidenav_dashboard">
-  {/* <NavLink className="Dashboard_a" to="/" id="Dashboard"><i className="fas fa-clipboard-list"></i> Dasher</NavLink> */}
-   <a className="Dashboard_a" href="/Myprofile" id="My_Profile"><i className="fas fa-user-alt"></i> Profile</a>
-  <NavLink className="Dashboard_a" to="/HallsList" id="Halls_List"><i className="fas fa-th-list"></i> Halls</NavLink>
-  <NavLink className="Dashboard_a" to="/orderlist" id="Orders_List"><i className="fas fa-tasks"></i> Orders</NavLink>
-  <NavLink className="Dashboard_a" to="/userlist" id="Users_List"><i className="fas fa-users"></i> Users</NavLink>
-  <NavLink className="Dashboard_a" to="/signin" id="SignOut_Dashboard" onClick={signoutHandler} ><i className="fas fa-sign-out-alt"></i> Logout</NavLink>
+  
+   <NavLink className="Dashboard_a" to="/Myprofile" id="My_Profile_owner"><i className="fas fa-user-alt"></i> Profile</NavLink>
+  <NavLink className="Dashboard_a" to="/HallsList/owner" id="Halls_List_owner"><i className="fas fa-th-list"></i>My Halls</NavLink>
+  <NavLink className="Dashboard_a" to="/orderlist/owner" id="Orders_List_owner"><i className="fas fa-tasks"></i> Orders</NavLink>
+  <NavLink className="Dashboard_a" to="/ContactUS" id="Contactus_owner"><PhoneIcon />Contact</NavLink>
+  <NavLink className="Dashboard_a" to="/signin" id="SignOut_Dashboard_owner" onClick={signoutHandler} ><i className="fas fa-sign-out-alt"></i> Logout</NavLink>
+
 </div>
 
 
@@ -110,11 +156,10 @@ const Admin = () => {
            <h1>Dashboard</h1>
            <div className="row padding">
             <div className="col-lg-3 col-md-6 col-sm-12">
-  <div className="card" style={{width: "14rem", textAlign:"center", backgroundColor:"rgb(247, 183, 7)", color:"white"}}>
+  <div className="card" style={{width: "14rem", textAlign:"center", backgroundColor:"#2196F3", color:"white"}}>
   <div className="card-body fonttt">
-    <h5 className="card-title"><i className="fas fa-users"></i> Total Users</h5>
-    <h3 className="card-subtitle mb-2">{users}</h3>
-    {/* <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> */}
+     <h5 className="card-title"><i class="fas fa-eye"></i> Pendings</h5>
+    <h3 className="card-subtitle mb-2">{pendings}</h3>
   </div>
 </div>
             </div>
@@ -156,51 +201,33 @@ const Admin = () => {
 
            </div>
 
-
-           <div style={{overflowX:"auto"}} className="container fonttt">
-  <h1>Admin Info</h1>            
-  <table className="table table-hover">
-    <thead>
-      <tr>
-        <th>FIRSTNAME</th>
-        <th>LASTNAME</th>
-        <th>ROLL NO#</th>
-        <th>EMAIL</th>
-        <th>CLASS</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Abdul</td>
-        <td>Wahab</td>
-        <td>FUI/FURC/F17-BSCS 001</td>
-        <td>ab89.wahab@gmail.com</td>
-        <td>BSCS-8</td>
-      </tr>
-      <tr>
-      <td>Alamdar</td>
-        <td>Ali</td>
-        <td>FUI/FURC/F17-BSCS 003</td>
-        <td>alamdar.ali@gmail.com</td>
-        <td>BSCS-8</td>
-      </tr>
-      <tr>
-      <td>Mian Daniyal</td>
-        <td>Shiraz</td>
-        <td>FUI/FURC/F17-BSCS 014</td>
-        <td>daniyal1283@gmail.com</td>
-        <td>BSCS-8</td>
-      </tr>
-      <tr>
-      <td>Ali</td>
-        <td>Hassan</td>
-        <td>FUI/FURC/F17-BSCS 037</td>
-        <td>ali.hassan91170@gmail.com</td>
-        <td>BSCS-8</td>
-      </tr>
-    </tbody>
-  </table>
+{/* <Charts/> */}
+<div className="container mt-5">
+<div className="row padding">
+<div className="col-lg-8 col-md-6 col-sm-12">
+<div style={{width: '50vw', height: 'auto'}}>
+    <BarChart width={730} height={250} data={data}>
+      <CartesianGrid strokeDasharray="3 3" />
+      <XAxis dataKey="heading" />
+      <YAxis />
+      <Bar label={true} dataKey="value" fill="#8884d8" />
+    </BarChart>
+  </div>
 </div>
+
+<div className="col-lg-4 col-md-6 col-sm-12 ">
+<ResponsiveContainer width="100%" height="100%">
+        <PieChart width={400} height={400}>
+          <Pie data={data01} dataKey="value" cx="50%" cy="50%" outerRadius={60} fill="#8884d8" />
+          <Pie data={data02} dataKey="value" cx="50%" cy="50%" innerRadius={70} outerRadius={90} fill="#82ca9d" label />
+        </PieChart>
+      </ResponsiveContainer>
+</div>
+</div>
+
+</div>
+
+     
 
 
     <Carousel_why />
@@ -212,4 +239,4 @@ const Admin = () => {
     </>
   );
 };
-export default Admin;
+export default OwnerDashboard;

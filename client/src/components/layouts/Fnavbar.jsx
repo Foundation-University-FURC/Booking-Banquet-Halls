@@ -104,7 +104,7 @@ const Fnavbar = () =>{
                   {/* <li>
                     <NavLink className="dropdown-item" to="/support">Support</NavLink>
                   </li> */}
-                  <li><NavLink className="dropdown-item" to ="/signin" onClick={signoutHandler}>Sign Out</NavLink></li>
+                  <li><NavLink className="dropdown-item" to ="/signin" onClick={signoutHandler}>SignOut</NavLink></li>
 </ul>
     </div>          
   ):!userInfo &&(

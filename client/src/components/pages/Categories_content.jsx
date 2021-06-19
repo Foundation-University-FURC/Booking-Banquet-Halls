@@ -1,6 +1,6 @@
 import img1 from '../images/marriage11.jfif';
 import img2 from '../images/car1.jpg';
-import img3 from '../images/p1.jpg';
+import img3 from '../images/photographer.png';
 import img4 from '../images/marriage_pic.jpg';
 import img5 from '../images/e1.jpg';
 

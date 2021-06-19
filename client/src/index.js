@@ -15,7 +15,8 @@ import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from 'react-router-dom';
 import {Provider} from 'react-redux'
 import store from './store'
-import SimpleReactLightbox from 'simple-react-lightbox'
+import SimpleReactLightbox from 'simple-react-lightbox';
+import Bar from 'react-chartjs-2';
 
 
 ReactDOM.render(

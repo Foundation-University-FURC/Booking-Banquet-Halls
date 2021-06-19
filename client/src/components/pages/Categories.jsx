@@ -23,7 +23,7 @@ const Categories=(props)=>{
 
     {/* <div className="container categories"> */}
     {/* <div className=""> */}
-        <div className="col-md-4 col-sm-12 ">
+        <div className="col-lg-4 col-md-4 col-sm-12 ">
             <div className="content"> <NavLink to={props.t}>
                     <div className="content-overlay"></div>
                      <img className="content-image" src={props.i}/>

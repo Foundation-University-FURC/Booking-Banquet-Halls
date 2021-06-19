@@ -5,10 +5,14 @@ import LoadingBox from './LoadingBox';
 import MessageBox from './MessageBox';
 import { ORDER_DELETE_RESET } from '../../constants/orderConstants';
 import Footer from './Footer';
+import Footer2 from './Footer2';
+import { signout } from '../../actions/userActions';
+import { NavLink } from 'react-router-dom';
 
 export default function OrderList(props) {
 
   const ownerMode = props.match.path.indexOf('/owner') >= 0;
+
   const orderList = useSelector((state) => state.orderList);
   const { loading, error, orders } = orderList;
 
@@ -33,8 +37,29 @@ export default function OrderList(props) {
       dispatch(deleteOrder(order._id));
     }
   };
+
+  const signoutHandler = ()=>{
+    dispatch(signout())
+}
+
   return (
     <div>
+
+{
+  userInfo && userInfo.isAdmin &&(
+
+<div id="mySidenav_dashboard" className="sidenav_dashboard">
+  {/* <NavLink className="Dashboard_a" to="/" id="Dashboard"><i className="fas fa-clipboard-list"></i> Dasher</NavLink> */}
+  <NavLink className="Dashboard_a" to="/Myprofile" id="My_Profile"><i className="fas fa-user-alt"></i> Profile</NavLink>
+  <NavLink className="Dashboard_a" to="/HallsList" id="Halls_List"><i className="fas fa-th-list"></i> Halls</NavLink>
+  <NavLink className="Dashboard_a" to="/orderlist" id="Orders_List"><i className="fas fa-tasks"></i> Orders</NavLink>
+  <NavLink className="Dashboard_a" to="/userlist" id="Users_List"><i className="fas fa-users"></i> Users</NavLink>
+  <NavLink className="Dashboard_a" to="/signin" id="SignOut_Dashboard" onClick={signoutHandler} ><i className="fas fa-sign-out-alt"></i> Logout</NavLink>
+</div>
+  )
+  }
+
+
       <h1 className="fonttt" style={{textAlign:"center"}}>All Orders</h1>
       {loadingDelete && <LoadingBox></LoadingBox>}
       {errorDelete && <MessageBox varient="danger">{errorDelete}</MessageBox>}
@@ -92,7 +117,7 @@ export default function OrderList(props) {
         </div>
       )}
 
-      <Footer/>
+      <Footer2/>
     </div>
   );
 }

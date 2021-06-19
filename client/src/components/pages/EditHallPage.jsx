@@ -6,6 +6,7 @@ import MessageBox from './MessageBox';
 import Footer from "./Footer";
 import Axios from 'axios';
 import { HALL_UPDATE_RESET } from '../../constants/HallsConstant';
+import Footer2 from './Footer2';
 
 export default function EditHallPage(props) {
 
@@ -180,7 +181,7 @@ const [loadingUpload, setLoadingUpload] = useState(false);
           </>
         )}
       </div>
-      <Footer/>
+      <Footer2 />
     </div>
   );
 }

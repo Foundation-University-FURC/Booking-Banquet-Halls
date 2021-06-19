@@ -40,7 +40,9 @@ import SearchBox from './components/pages/SearchBox';
 import Support from './components/pages/Support';
 import ChatBox from './components/pages/ChatBox';
 import ContactUs from './components/pages/ContactUs';
-
+// import Forget from './components/pages/Forget';
+import OwnerDashboard from './components/pages/OwenrDashboard';
+import Forget from './components/pages/Forget';
 
 function App() {
    const userSignin = useSelector((state) => state.userSignin);
@@ -64,6 +66,8 @@ function App() {
 {
   userInfo && userInfo.isAdmin?(
     <Route exact path = '/' component={Admin} />
+  ): userInfo && userInfo.isOwner?(
+    <Route exact path="/" component={OwnerDashboard}/>
   ):(
     <Route exact path="/" component={Navbar}/>
   )
@@ -82,6 +86,7 @@ function App() {
 {/* <Route  path = '/MHall/:id' component={Hall_Details} /> */}
 <Route exact path='/design_card' component={Card_design}/>
 <Route exact path='/design_card/:id' component={Cards_details}/>
+<Route exact path='/reset-password/:id/:token' component={Forget}/>
 <Route exact path='/photographers' component={Photographer}/>
 <Route  path = '/photographers/:id' component={Grapher_Details} />
 <Route  path = '/BookingMain/:id?' component={BookingMain} />

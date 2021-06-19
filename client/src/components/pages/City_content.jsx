@@ -1,4 +1,4 @@
-import img6 from '../images/grt.jpg';
+import img6 from '../images/gujrat.png';
 import img7 from '../images/jhelum.jpg';
 import img8 from '../images/lhr.jfif';
 import img9 from '../images/rwp.jfif';

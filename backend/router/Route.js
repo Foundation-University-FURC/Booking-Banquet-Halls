@@ -9,17 +9,19 @@ const User = require("../models/user.js")
 const users = require("../data/Users.js")
 const Mhall = require("../data/Halls.js")
 const Order =require( '../models/order.js');
-const {isAuth, isAdmin, isOwnerOrAdmin, mailgun, isOwner}  = require( '../utils.js');
+const {isAuth, isAdmin, isOwnerOrAdmin, mailgun, isOwner, UserEmailTemplate2}  = require( '../utils.js');
 const {OrderEmailTemplate} = require('../utils.js')
 const bcrypt =require('bcryptjs')
 const { generateToken } = require("../utils.js")
 const Marriage_hall = require("../models/marriage_hall.js")
 const { populate } = require("../models/marriage_hall.js")
+const { isValidObjectId } = require("mongoose")
 const router = express.Router()
-
-
+const jwt = require('jsonwebtoken');
 const userRouter = express.Router()
 const orderRouter = express.Router();
+
+const nodemailer = require('nodemailer');
 
 // get Route for users
 router.get('/seed',asysncHandler(async(req,res)=>{
@@ -159,23 +161,32 @@ router.post(
   );
 
 
-//  For Order
+//  For create Order
 
 router.post(
     '/orders',
     isAuth,
     // isOwnerOrAdmin,
     asysncHandler(async (req, res) => {
+      console.log("Order: ",req.body.orderItems[0])
+      console.log("Order Body: ",req.body)
       if (req.body.orderItems.length === 0) {
         res.status(400).send({ message: 'Order Cart is empty' });
       } else {
         const order = new Order({
-          owner: req.body.orderItems[0].owner,
+        owner: req.body.orderItems[0].owner,
         orderItems: req.body.orderItems,
-        user: req.user._id, 
+        product: req.body.orderItems[0].product,
+        user: req.user._id,
+        TotalPrice:req.body.orderItems[0].Total,
+        hallPrice:req.body.orderItems[0].Total1,
+        MenuPrice:req.body.orderItems[0].Total2,
+        ThemePrice:req.body.orderItems[0].Total3,
+        ServicesPrice:req.body.orderItems[0].Total4,
         // orderDetail: req.body.orderItems,
           
         });
+        // console.log(req.body.orderItems[0]);
         const createdOrder = await order.save();
         res.status(201).send({ message: 'New Order Created', order: createdOrder });
       }
@@ -564,6 +575,117 @@ router.delete(
 );
 
 
+// Forget Password
+
+router.get('/forget-password',asysncHandler(async(req,res,next)=>{
+  // res.render('Forget');
+    })
+)
+const JWT_SECRET =  process.env.JWT_SECRET || 'somethingsecret'
+
+router.post('/forget-password',asysncHandler(async(req,res,next)=>{
+  const email2 = req.body.email2;
+  console.log("user email2: ",email2)
+  const user = await User.findOne({email:email2});
+  console.log("user in post forget: ",user)
+    
+    if(user){
+      const userPassword = user.password
+    const userName = user.name
+    const userEmail = user.email
+
+    const secret = JWT_SECRET + userPassword; 
+    console.log("check secret exist 2: ",secret)
+   const userId = user._id
+    console.log("user check id: ",userId);
+      const payload = {
+        _id: user._id,
+        name: user.name,
+        email: user.email,
+        isAdmin: user.isAdmin,
+        isOwner: user.isOwner,
+      }
+       const token = jwt.sign(payload,secret,{expiresIn: '15m'})
+       const link = `http://localhost:3000/reset-password/${userId}/${token}` 
+        console.log(link); 
+        res.send("password reset link has been sent to Your Email...")
+
+        // Node  mailgun
+        mailgun().messages().send({
+          //parameters for email
+          from: 'EventHub <eventhub@mg.yourdomain.com>',
+          to: `${userName} <${userEmail}>`,
+          subject: `Reset Password Link`,
+          html: UserEmailTemplate2(userName,link),
+        }, (error,body) =>{
+          if(error){
+            console.log(error);
+          }else{
+            console.log(body);
+          }
+        });
+
+
+  }else{
+    res.send("User not registerd yet");
+  }
+    })
+)
+router.get('/reset-password/:id/:token',asysncHandler(async(req,res,next)=>{
+  const {id,token} = req.params;
+  console.log("For get:",req.params);
+  // res.send(req.params);
+  const users = await User.findById(id)
+  console.log("check email exist 1: ",users.email)
+  console.log("check email exist 1: ",users)
+  if(users){
+    const secret = JWT_SECRET + users.password
+    console.log("check secret exist 1: ",secret)
+    const payload = jwt.verify(token, secret)
+    // then render that page 
+    // res.render('reset-password',{email:users.email})
+    console.log("check email exist: ",users.email)
+    res.send(users.email);
+  }else{
+    res.send("inavlid user")
+  }
+
+    })
+)
+router.post('/reset-password/:id/:token',asysncHandler(async(req,res,next)=>{
+  
+  const {id,token} = req.params;
+  const password = req.body.password
+  const users = await User.findById(id)
+  console.log("User for password: ", users)
+  
+  if (users) {
+    const secret = JWT_SECRET + users.password
+    const payload = jwt.verify(token, secret);
+
+    users.password = password;
+    if (users.password) {
+      console.log("user password before hash: ", users.password)
+      users.password = bcrypt.hashSync(users.password, 8);
+    }
+    console.log("user password after hash: ", users.password)
+    const updatedUser = await users.save();
+
+    res.send({
+      _id: updatedUser._id,
+      name: updatedUser.name,
+      email: updatedUser.email,
+      isAdmin: updatedUser.isAdmin,
+      isOwner: updatedUser.isOwner,
+      token: generateToken(updatedUser),
+    });
+  }else{
+    res.send("inavlid user id")
+  }
+
+    })
+)
+
 // Accepted Order Route
 router.put(
   '/orders/:id/accept',
@@ -624,6 +746,209 @@ router.post('/lists/:id/reviews', isAuth, asysncHandler(async (req,res)=>{
   }   
 }))
 
+// Check Date
+router.get('/check-date', asysncHandler( async(req, res)=>{
+
+const datee = req.query.date;
+let date_ob1 = new Date(datee);
+let date = date_ob1.getDate();
+let month = date_ob1.getMonth() + 1;
+let year = date_ob1.getFullYear();
+const datee1= year + "-" + month + "-" + date;
+const hallname= req.query.hallName;
+const hallId = req.query.hallId;
+console.log("Hall Name: ",hallname);
+console.log("Marriage Hall ID: ",hallId);
+console.log("Marriage Hall Date: ", datee);
+
+
+const order_date = await Order.find({product: req.query.hallId});
+
+const order_found = order_date.map(val=>(val.orderItems.filter(val2=> (val2.date===datee && val2.hallName===hallname) )))
+
+for( i=0;i<order_found.length;i++)
+{
+  console.log(order_found[i])
+  if(order_found[i].length!==0){
+    // this will be run when there is an Order of same ID
+    res.status(400).send({Message:"Booking Date is already Selected! Please Try another one"});
+  }
+}
+
+let ts = Date.now();
+
+let date_ob = new Date(ts);
+let date1 = date_ob.getDate();
+let month1 = date_ob.getMonth() + 1;
+let year1 = date_ob.getFullYear();
+
+// prints date & time in YYYY-MM-DD format
+console.log(year1 + "-" + month1+ "-" + date1);
+const dateV = year1 + "-" + month1 + "-" + date1;
+
+if(datee1<dateV){
+  console.log("datee: ",datee1);
+  console.log("dateV: ",dateV);
+
+res.status(404).send({Message:"Event Date has been passed Please try another one"});
+}else{
+  console.log("datee: ",datee1);
+  console.log("dateV: ",dateV);
+res.status(200).send({Message:"Great!!!"});
+}
+
+}))
+
+// user Count
+
+router.get('/user-count', asysncHandler( async(req,res)=>{
+  const users = await User.find({});
+
+  // console.log("users count: ",users.length)
+  
+ 
+  if(users){
+    res.status(200).json(users.length);
+  }else{
+    res.status(400).send({Message: "No User Found"});
+  }
+}))
+// order Count for owner
+
+router.get('/order-count-owner', asysncHandler( async(req,res)=>{
+  const order = await Order.find({owner: req.query.ownerId});
+
+  // console.log("order count for owner: ",order.length)
+ 
+  if(order){
+    res.status(200).json(order.length);
+  }else{
+    res.status(400).send({Message: "No No Booking Found"});
+  }
+}))
+
+// Booking Count
+router.get('/order-count', asysncHandler( async(req,res)=>{
+  
+  const orders= await Order.find({});
+  
+  // console.log("Booking count: ",orders)
+ 
+  if(orders){
+    res.status(200).json(orders.length);
+  }else{
+    res.status(400).send({Message: "No Order Found"});
+  }
+  
+}))
+
+// Hall Count
+router.get('/hall-count', asysncHandler( async(req,res)=>{
+  
+  const MHall= await marriage_hall.find({});
+ 
+  // console.log("Halls count: ",MHall)
+ 
+  if(MHall){
+    res.status(200).json(MHall.length);
+  }else{
+    res.status(400).send({Message: "No Hall Found"});
+  }
+}))
+
+// Hall Count of owner
+router.get('/hall-count-owner', asysncHandler( async(req,res)=>{
+  
+  const MHall= await marriage_hall.find({owner: req.query.ownerId});
+ 
+  // console.log("Halls count of owner: ",MHall)
+ 
+  if(MHall){
+    res.status(200).json(MHall.length);
+  }else{
+    res.status(400).send({Message: "No Marriage Hall"});
+  }
+}))
+
+// Total Earnings
+router.get('/earning-count', asysncHandler( async(req,res)=>{
+  
+  const orders= await Order.find({});
+  var earning=0;
+  var pending=0;
+ for (i=0;i<orders.length;i++){
+  if(orders[i].acceptedAt){
+    earning+=orders[i].TotalPrice;
+  }else{
+    pending++;
+  }
+}
+if(earning!==0){
+  console.log("Total Earning: ",earning)
+  console.log("Total pending: ",pending)
+  res.status(200).json(earning);
+}else{
+  res.status(400).send(pending);
+}
+}))
+
+// Total Earnings of Owner
+router.get('/earning-count-owner', asysncHandler( async(req,res)=>{
+  
+  const orders= await Order.find({owner: req.query.ownerId});
+  var earning=0;
+  var pending=0;
+ for (i=0;i<orders.length;i++){
+  if(orders[i].acceptedAt){
+    earning+=orders[i].TotalPrice;
+  }else{
+    pending++;
+  }
+}
+if(earning!==0){
+  console.log("Total Earning of owner: ",earning)
+  console.log("Total pending of owner: ",pending)
+  res.status(200).json(earning);
+}else{
+  res.status(400).send(pending);
+}
+}))
+
+// Pending Bookings
+router.get('/pending-count', asysncHandler( async(req,res)=>{
+  
+  const orders= await Order.find({});
+  var pending=0;
+ for (i=0;i<orders.length;i++){
+  if(!orders[i].acceptedAt){
+    pending++;
+  }
+}
+if(pending!==0){
+  console.log("Total pending: ",pending)
+  res.status(200).json(pending);
+}else{
+  res.json(0);
+}
+}))
+
+// Pending Bookings of Owner
+router.get('/pending-count-owner', asysncHandler( async(req,res)=>{
+  
+  const orders= await Order.find({owner: req.query.ownerId});
+  var pending=0;
+ for (i=0;i<orders.length;i++){
+  if(!orders[i].acceptedAt){
+    pending++;
+  }
+}
+if(pending!==0){
+  console.log("Total pending booking of owner: ",pending)
+  res.status(200).json(pending);
+}else{
+  res.json(0);
+}
+}))
 
 
 module.exports = router

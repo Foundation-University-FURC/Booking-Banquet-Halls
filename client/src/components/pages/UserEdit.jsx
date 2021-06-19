@@ -10,9 +10,11 @@ import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormLabel from '@material-ui/core/FormLabel';
 import Footer from './Footer';
+import Footer2 from './Footer2';
 
 
 export default function UserEdit(props) {
+  
   const userId = props.match.params.id;
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -121,7 +123,7 @@ export default function UserEdit(props) {
 
      
 
-<Footer/>
+<Footer2/>
 
     </div>
   );

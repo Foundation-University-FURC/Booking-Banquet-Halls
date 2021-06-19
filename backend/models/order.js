@@ -6,6 +6,11 @@ const orderSchema = mongoose.Schema({
     //     required: true,
     //     ref: 'User'
     // },
+    TotalPrice:{ type: Number, required: true},
+    hallPrice: { type: Number, required: true},
+    MenuPrice: { type: Number, required: true},
+    ThemePrice: { type: Number, required: true},
+    ServicesPrice: { type: Number, required: true},
     orderItems:[
         {
             
@@ -27,7 +32,7 @@ const orderSchema = mongoose.Schema({
                 ref: 'Marriage_hall'
             },
            
-            date: { type: Date, required: true},
+            date: { type: String, required: true},
             Guests: { type: Number, required: true},
             Shift: { type: String, required: true},
             hallName: { type: String, required: true},
@@ -41,21 +46,13 @@ const orderSchema = mongoose.Schema({
 
         }
     ],
+    product:{
+        type:mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: 'Marriage_hall'
+    },
     user: { type: mongoose.Schema.Types.ObjectId, ref: 'User',required: true},
     owner: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
-    // orderDetail:{
-    //     date: { type: Date, required: true},
-    //     Guests: { type: Number, required: true},
-    //     Shift: { type: String, required: true},
-    //     hallName: { type: String, required: true},
-    //     Menu1: { type: String, required: true},
-    //     Theme: { type: String, required: true},
-    //     Services: { type: String, required: true},
-    //     Sitting: { type: String, required: true},
-    //     style: { type: String, required: true},
-    //     EventType: { type: String, required: true},
-    //     Comments: { type: String},
-    // },
     bookAt:{
         type: Date
     },

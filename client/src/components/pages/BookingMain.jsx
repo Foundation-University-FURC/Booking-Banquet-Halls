@@ -52,36 +52,41 @@ const { loading, success, error, order } = orderCreate;
 
 //  services for total bill
 
+
+var Total1 = 0;
+var Total2 = 0;
+var Total3 = 0;
+var Total4 = 0;
+
+
 var hall_price = (cart.cartItems.map((val)=>( 
   val.HallName.filter((val)=>val.name===urldata.hallName).map(val=>(
-<p>{val.price}</p>
+<p>{Total1+=val.price}</p>
 ))
 )))
 
-
 var menu_price =  (cart.cartItems.map((val)=>(
 val.Menu.filter((val)=>val.name===urldata.Menu1).map(val=>(
-<p>{val.price * urldata.Guests}</p>
+<p>{Total2+=(val.price * urldata.Guests)}</p>
 ))
 
 )))
 
 var theme_price =  (cart.cartItems.map((val)=>(
 val.Decoration.filter((val)=>val.name===urldata.Theme).map(val=>(
-<p>{val.price}</p>
+<p>{Total3+=val.price}</p>
 ))
 
 )))
 
-var services_price =  (cart.cartItems.map((val)=>(
+var services_price= (cart.cartItems.map((val)=>(
 val.Other_Services.filter((val)=>val.name===urldata.Services).map(val=>(
-<p>{val.price}</p>
+<p>{Total4+=val.price}</p>
 ))
 
 )))
 
-
-const total = services_price + menu_price + hall_price +theme_price;
+var Total = Total1 + Total2 + Total3 + Total4;
 
     const dispatch = useDispatch();
     const placeOrderHandler = () => {
@@ -89,7 +94,8 @@ const total = services_price + menu_price + hall_price +theme_price;
       // if(urldata.date===orderDate){
       //   window.alert("Already booked on this date")
       // }
-      dispatch(createOrder({ ...cart, orderItems: cart.cartItems }));
+      
+      dispatch(createOrder({ ...cart, orderItems: cart.cartItems}));
     };
     useEffect(() => {
       if (success) {
@@ -99,10 +105,10 @@ const total = services_price + menu_price + hall_price +theme_price;
     }, [dispatch, order, props.history, success]);
     useEffect(() => {
       if (Hallid) {
-        dispatch({type: CART_EMPTY})
-        dispatch(addToCart(Hallid , urldata.date, urldata.Guests,urldata.Shift, urldata.hallName,urldata.Menu1,urldata.Theme,urldata.Services,urldata.Sitting,urldata.style,urldata.EventType,urldata.Comments));
+        // dispatch({type: CART_EMPTY})
+        dispatch(addToCart(Hallid , urldata.date, urldata.Guests,urldata.Shift, urldata.hallName,urldata.Menu1,urldata.Theme,urldata.Services,urldata.Sitting,urldata.style,urldata.EventType,urldata.Comments,Total,Total1,Total2,Total3,Total4));
       }
-    }, [dispatch, Hallid, urldata.date, urldata.Guests,urldata.Shift, urldata.hallName,urldata.Menu1,urldata.Theme,urldata.Services,urldata.Sitting,urldata.style,urldata.EventType,urldata.Comments]);
+    }, [dispatch, Hallid, urldata.date, urldata.Guests,urldata.Shift, urldata.hallName,urldata.Menu1,urldata.Theme,urldata.Services,urldata.Sitting,urldata.style,urldata.EventType,urldata.Comments,Total,Total1,Total2,Total3,Total4]);
     // console.log(cart.cart1.Hallname)
 
    const image = cart.cartItems.map(val=>(
@@ -112,10 +118,6 @@ const total = services_price + menu_price + hall_price +theme_price;
      val.name
    ))
 
-
- 
-    const Total = 287000;
-
     const classes = useStyles();
     
     return (
@@ -124,7 +126,7 @@ const total = services_price + menu_price + hall_price +theme_price;
           <h1 style={{textAlign:"center"}} className="fonttt">Welcome to booking page</h1>
           <div className="container mt-5">
           <div style={{border:"1px solid", borderRight:"1px solid"}} className="row padding mb-5">
-            <div style={{borderRight:"1px solid"}} className="col-lg-6 col-md-6 col-sm-12">
+            <div style={{borderRight:"1px solid"}} className="col-lg-6 col-md-6 col-sm-12 fonttt2">
             <h2 className="bInfo">Billing Informaition</h2>
             
           
@@ -172,21 +174,13 @@ const total = services_price + menu_price + hall_price +theme_price;
           </Typography>
         </CardContent>
       </CardActionArea>
-      {/* <CardActions>
-        <Button size="small" color="secondary">
-          Share
-        </Button>
-        <Button size="small" color="primary">
-          Learn More
-        </Button>
-      </CardActions> */}
     </Card>
           </div>
           </div>
-          <div className="col-lg-6 col-md-6 col-sm-12">
+          <div className="col-lg-6 col-md-6 col-sm-12 fonttt2">
           <h2 className="bInfo">Booking Summary</h2>
           <div className="row padding mt-3">
-          <div  className ="col-lg-6 col-md-6 col-sm-12  fonttt">
+          <div  className ="col-lg-6 col-md-6 col-sm-12 ">
             <h4 className="BS-h4">Date:</h4>
             <h4 className="BS-h4">Guests:</h4>
             <h4 className="BS-h4">Shift:</h4>
@@ -202,7 +196,7 @@ const total = services_price + menu_price + hall_price +theme_price;
           </div>
 
 {/* Changes:  urldata -> cart1 */}
-          <div className ="col-lg-6 col-md-6 col-sm-12 fonttt" >
+          <div className ="col-lg-6 col-md-6 col-sm-12" >
             <h4 className="BS-4-center">{cart1.date}</h4>
             <h4 className="BS-4-center">{cart1.Guests}</h4>
             <h4 className="BS-4-center">{cart1.Shift}</h4>
@@ -219,7 +213,7 @@ const total = services_price + menu_price + hall_price +theme_price;
 
           </div>
             </div>
-          <button style={{height:"60px", width:"50%",marginLeft:"25%", borderRadius:"10px"}} className="btn btn-warning mt-5"><h3 style={{fontFamily:"'Courgette', cursive"}} onClick={placeOrderHandler}>Book Now</h3></button>
+          <button style={{height:"60px", width:"30%",marginLeft:"35%", borderRadius:"10px"}} className="btn btn-danger mt-5"><h3 style={{fontFamily:"initial"}} onClick={placeOrderHandler}>Book Now</h3></button>
          <div className="container">
           {loading && <LoadingBox></LoadingBox>}
               {error && <MessageBox variant="danger">{error}</MessageBox>}

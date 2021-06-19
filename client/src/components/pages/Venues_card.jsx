@@ -25,8 +25,8 @@ const Venues_card =(props)=> {
   <div>
   <Rating value={props.rating} text = {`${props.reviews} reviews`}/>
   </div>
-    <NavLink to= {`/MHall/${props._id}`} className="btn btn-success" >More Info</NavLink>
-    <NavLink to={`/MHall/${props._id}`} className="btn btn-warning" style={{float:"right"}}>Book Now</NavLink>
+    <NavLink to= {`/MHall/${props._id}`} className="btn btn-success" style={{width:"100%"}}>More Info</NavLink>
+    {/* <NavLink to={`/MHall/${props._id}`} className="btn btn-warning" style={{float:"right"}}>Book Now</NavLink> */}
 
   </div>
 </div>

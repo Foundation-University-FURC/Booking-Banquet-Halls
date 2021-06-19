@@ -5,6 +5,7 @@ import { USER_UPDATE_PROFILE_RESET } from '../../constants/userConstants';
 import LoadingBox from './LoadingBox';
 import MessageBox from './MessageBox';
 import Footer from './Footer';
+import Footer2 from './Footer2';
 
 export default function ProfileScreen() {
 
@@ -33,6 +34,7 @@ export default function ProfileScreen() {
     // dispatch(detailsUser(userInfo._id));
     if (!user) {
       dispatch({ type: USER_UPDATE_PROFILE_RESET });
+      
       dispatch(detailsUser(userInfo._id));
     } else {
       setName(user.name);
@@ -131,7 +133,7 @@ export default function ProfileScreen() {
 
          
         )}
-        <Footer />
+        <Footer2 />
     </>
   );
 }

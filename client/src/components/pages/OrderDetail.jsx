@@ -8,6 +8,7 @@ import { useState } from 'react';
 import LoadingBox from './LoadingBox';
 import MessageBox from './MessageBox';
 import { ORDER_ACCEPT_RESET } from '../../constants/orderConstants';
+import Footer2 from './Footer2';
 
 
 
@@ -82,10 +83,10 @@ const OrderDetail =(props)=> {
           </div>
 
 
-          <div className="col-lg-6 col-md-6 col-sm-12">
+          <div className="col-lg-6 col-md-6 col-sm-12 fonttt2">
           <h2 className="bInfo">Order Summary</h2>
           <div className="row padding mt-3">
-          <div  className ="col-lg-6 col-md-6 col-sm-12 fonttt">
+          <div  className ="col-lg-6 col-md-6 col-sm-12">
           <h4 className="BS-h4">Date:</h4>
             <h4 className="BS-h4">Guests:</h4>
             <h4 className="BS-h4">Shift:</h4>
@@ -100,39 +101,39 @@ const OrderDetail =(props)=> {
 
           </div>
 
-          <div className ="col-lg-6 col-md-6 col-sm-12 fonttt" > 
+          <div className ="col-lg-6 col-md-6 col-sm-12" > 
             <h4 className="BS-4-center">{order.orderItems.map((val)=>(
-              <p>  {val.date.substring(0,10)}</p>
+               val.date.substring(0,10)
             ))}</h4>
             <h4 className="BS-4-center">{order.orderItems.map((val)=>(
-              <p>{val.Guests}</p>
+              val.Guests
             ))}</h4>
             <h4 className="BS-4-center">{order.orderItems.map((val)=>(
-              <p>{val.Shift}</p>
+              val.Shift
             ))}</h4>
             <h4 className="BS-4-center">{order.orderItems.map((val)=>(
-              <p>{val.hallName}</p>
+              val.hallName
             ))}</h4>
             <h4 className="BS-4-center">{order.orderItems.map((val)=>(
-              <p>{val.Menu1}</p>
+              val.Menu1
             ))}</h4>
             <h4 className="BS-4-center">{order.orderItems.map((val)=>(
-              <p>{val.Theme}</p>
+              val.Theme
             ))}</h4>
             <h4 className="BS-4-center">{order.orderItems.map((val)=>(
-              <p>{val.Services}</p>
+              val.Services
             ))}</h4>
             <h4 className="BS-4-center">{order.orderItems.map((val)=>(
-              <p>{val.Sitting}</p>
+              val.Sitting
             ))}</h4>
             <h4 className="BS-4-center">{order.orderItems.map((val)=>(
-              <p>{val.style}</p>
+              val.style
             ))}</h4>
             <h4 className="BS-4-center">{order.orderItems.map((val)=>(
-              <p>{val.EventType}</p>
+              val.EventType
             ))}</h4>
             <h4 className="BS-4-center">{order.orderItems.map((val)=>(
-              <p>{val.Comments}</p>
+              val.Comments
             ))}</h4>
           </div>
 
@@ -166,7 +167,7 @@ const OrderDetail =(props)=> {
 
 </div>
 
-          <Footer />
+          <Footer2 />
         </>
    );
    

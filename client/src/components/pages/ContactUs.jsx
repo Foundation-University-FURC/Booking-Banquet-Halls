@@ -9,6 +9,7 @@ import dani from '../images/Dani.PNG';
 import ali from '../images/Ali.PNG';
 import Carousel_why from './Carousel_why';
 import Footer from './Footer';
+import Footer2 from './Footer2';
 
 const ContactUs = () => {
 
@@ -36,16 +37,16 @@ const sendEmail = (e) =>{
                     <form className="contact-form" onSubmit={sendEmail}>
       {/* <input type="hidden" name="contact_number" /> */}
       <b><label for="exampleInputName1" class="form-label">Name</label></b>
-      <input type="text" className="form-control" id="exampleInputName1" aria-describedby="userName" name="name" placeholder="Enter Full Name" />
+      <input type="text" className="form-control" id="exampleInputName1" aria-describedby="userName" name="name" required placeholder="Enter Full Name" />
       <br/>
      <b><label for="exampleInputSubject1" class="form-label">Subject</label></b> 
-      <input type="text" className="form-control" id="exampleInputSubject1" aria-describedby="subject" name="subject" placeholder="Enter Subject" />
+      <input type="text" className="form-control" id="exampleInputSubject1" aria-describedby="subject" name="subject" required placeholder="Enter Subject" />
       <br/>
      <b> <label for="exampleInputEmail1" class="form-label">Email</label></b> 
-      <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" placeholder="Enter Email" />
+      <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" required placeholder="Enter Email" />
       <br/>
      <b> <label for="exampleInputMsg1" class="form-label">Message:</label></b> 
-      <textarea className="form-control" style={{width:"100%",height:'8rem'}} name="message" placeholder="Write Message..." />
+      <textarea className="form-control" style={{width:"100%",height:'8rem'}} name="message" required placeholder="Write Message..." />
       <br/>
       <button type="submit" class="btn btn-primary">Submit</button>
     </form>
@@ -55,11 +56,11 @@ const sendEmail = (e) =>{
                     <div className = "col-lg-6 col-md-6 col-sm-12 col-xs-12">    
                         <div className="contactUs123">
                             <div className="contactUS-text">
-                            <p><PhoneIcon  />+92-51-8466686</p>
+                            <p><PhoneIcon  />+923041840736</p>
                             <br/>
                             <p><EmailIcon />info@eventhub.com</p>
                             <br/>
-                            <p><LocationOnIcon />F-11 Markaz Islamabad Pakistan</p>
+                            <p><LocationOnIcon />Foundation University Islamabad Pakistan</p>
                             </div>
                         </div>
                     </div>
@@ -102,7 +103,7 @@ const sendEmail = (e) =>{
 
     <Carousel_why />
         <br/>
-    {/* <Footer/> */}
+    <Footer2 />
         </>
     )
 }

@@ -2,7 +2,7 @@ import Halls from './MarriageHalls'
 import { applyMiddleware, combineReducers, compose, createStore } from "redux";
 import thunk from "redux-thunk";
 import { hallListReducers,hallDetailsReducers, hallCreateReducer, hallUpdateReducer, hallDeleteReducer, hallReviewCreateReducer } from './reducers/hallReducers';
-import { userRegisterReducer, userSigninReducer,  userDetailsReducer,userUpdateProfileReducer,  userListReducer, userDeleteReducer, userUpdateReducer, } from './reducers/userReducers';
+import { userRegisterReducer, userSigninReducer,  userDetailsReducer,userUpdateProfileReducer,  userListReducer, userDeleteReducer, userUpdateReducer, userForgetReducer, } from './reducers/userReducers';
 import { cartReducer } from './reducers/cartReducers';
 import { orderAcceptReducer, orderCreateReducer,orderDeleteReducer,orderDetailsReducer, orderListReducer, orderMineListReducer} from './reducers/orderReducers';
 
@@ -25,6 +25,7 @@ const initialState = {
 const reducer = combineReducers({
     HallsList: hallListReducers,
     hallDetails: hallDetailsReducers,
+    userForget: userForgetReducer,
     userSignin: userSigninReducer,
     userRegister: userRegisterReducer,
     cart: cartReducer,

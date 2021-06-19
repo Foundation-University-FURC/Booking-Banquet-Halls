@@ -33,6 +33,9 @@ import { HALL_REVIEW_CREATE_RESET } from '../../constants/HallsConstant';
 
 
 import Rating from '../Rating';
+import { compare } from 'bcryptjs';
+import { ORDER_CREATE_RESET } from '../../constants/orderConstants';
+import { CART_EMPTY } from '../../constants/cartConstant';
 
 
 const settings = {
@@ -118,15 +121,29 @@ const Hall_Details = (props) => {
 
    
 
-    const submitHandler = (e) => {
+    const submitHandler = async (e) => {
       // setDate(e)
       e.preventDefault();
-
-      dispatch(
-        CartActions({ date, Guests, Shift, hallName, Menu1,Theme,Services,Sitting,style,EventType,Comments })
-      );  
-     
-     props.history.push(`/BookingMain/${hallId}?date=${date}&Guests=${Guests}&Shift=${Shift}&hallName=${hallName}&Menu1=${Menu1}&Theme=${Theme}&Services=${Services}&Sitting=${Sitting}&style=${style}&EventType=${EventType}&Comments=${Comments}`);
+      
+      // const Mname = await axios.get(`/api/lists/${hallId}`);
+      // const M_name = Mname.data.name;
+      try{
+        const checkDate = await axios.get('/api/check-date',{params: {date,hallName,hallId}});
+        console.log(checkDate.data.Message)
+        if(checkDate.data.Message=="Great!!!"){
+          dispatch({type: CART_EMPTY})
+          dispatch(
+            CartActions({ date, Guests, Shift, hallName, Menu1,Theme,Services,Sitting,style,EventType,Comments })
+          );  
+        dispatch({type: ORDER_CREATE_RESET})
+         props.history.push(`/BookingMain/${hallId}?date=${date}&Guests=${Guests}&Shift=${Shift}&hallName=${hallName}&Menu1=${Menu1}&Theme=${Theme}&Services=${Services}&Sitting=${Sitting}&style=${style}&EventType=${EventType}&Comments=${Comments}`);
+          }
+      }catch(error){
+        // console.log()
+          window.alert(error.response.data.Message);
+        
+      }
+   
     };
 
     const submitHandler1 = (e) => {
@@ -195,7 +212,7 @@ const Hall_Details = (props) => {
 
 <div className ="container my-3 detail-form2">
 <ul style={{listStyle: "none"}}>
-<h3 >Why Choose Us?</h3>
+<h3>Why Choose Us?</h3>
 <div className="row">
 <li> <i className="fa fa-check-square" style={{color:"green"}} /> Gurante Best Price </li>
 <li> <i className="fa fa-check-square"  style={{color:"green"}}/> Free Planning Consultant </li>
