@@ -43,6 +43,8 @@ import ContactUs from './components/pages/ContactUs';
 // import Forget from './components/pages/Forget';
 import OwnerDashboard from './components/pages/OwenrDashboard';
 import Forget from './components/pages/Forget';
+import NotFound from './components/pages/NotFound';
+
 
 function App() {
    const userSignin = useSelector((state) => state.userSignin);
@@ -101,7 +103,7 @@ function App() {
 <OwnerRoute path="/orderlist/owner" component={OrderList}></OwnerRoute>
 <Route path="/Myprofile" component={UserProfile}></Route>
 <Route path="/ContactUS" component={ContactUs}></Route>
-
+<Route path="*" component={NotFound}></Route>
 <Route path="/search/name/:name?" component={Search} exact ></Route>
 <Route path="/search/name//location/:location?" component={Search} exact></Route>
 

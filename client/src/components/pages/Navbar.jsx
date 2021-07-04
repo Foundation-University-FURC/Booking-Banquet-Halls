@@ -53,8 +53,8 @@ const Navbar = (props) =>{
 </div>
 </div>
 </div>
-<div className="container-fluid mb-5">
-<div className="row padding">
+<div className="container mb-5">
+<div className="row">
 {/* <div className="col-4 col-sm-12"> */}
 
 {

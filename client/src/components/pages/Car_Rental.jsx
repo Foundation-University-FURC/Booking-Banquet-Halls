@@ -28,18 +28,6 @@ const Car_Rental = () =>{
 </header>
 
 
-{/* <div className="filter my-5">
-  <form>
-   
-    <br/>
-  
-    <br/>
-   
-  
-   
-  </form>
-</div> */}
-
       <div className="container my-5">
 <div className="row">
 <div className="col-12 mx-auto">

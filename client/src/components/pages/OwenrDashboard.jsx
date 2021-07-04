@@ -154,9 +154,9 @@ const OwnerDashboard = () => {
       <div className ="container dasher fonttt" style={{marginLeft:"9%"}}>
         <div className="row padding">
            <h1>Dashboard</h1>
-           <div className="row padding">
+           <div className="row padding ">
             <div className="col-lg-3 col-md-6 col-sm-12">
-  <div className="card" style={{width: "14rem", textAlign:"center", backgroundColor:"#2196F3", color:"white"}}>
+  <div className="card dashboard_owner" style={{width: "14rem", textAlign:"center", backgroundColor:"#2196F3", color:"white"}}>
   <div className="card-body fonttt">
      <h5 className="card-title"><i class="fas fa-eye"></i> Pendings</h5>
     <h3 className="card-subtitle mb-2">{pendings}</h3>
@@ -165,7 +165,7 @@ const OwnerDashboard = () => {
             </div>
 
             <div className="col-lg-3 col-md-6 col-sm-12">
-  <div className="card" style={{width: "14rem", textAlign:"center", backgroundColor:"#555", color:"white"}}>
+  <div className="card dashboard_owner" style={{width: "14rem", textAlign:"center", backgroundColor:"#555", color:"white"}}>
   <div className="card-body fonttt">
     <h5 className="card-title"><i className="fas fa-tasks"></i> Total Bookings</h5>
     <h3 className="card-subtitle mb-2">{orders}</h3>
@@ -178,7 +178,7 @@ const OwnerDashboard = () => {
 
 
             <div className="col-lg-3 col-md-6 col-sm-12">
-  <div className="card" style={{width: "14rem", textAlign:"center", backgroundColor:"#f44336", color:"white"}}>
+  <div className="card dashboard_owner" style={{width: "14rem", textAlign:"center", backgroundColor:"#f44336", color:"white"}}>
   <div className="card-body fonttt">
     <h5 className="card-title"><i className="fas fa-th-list"></i> Marriage Halls</h5>
     <h3 className="card-subtitle mb-2">{halls}</h3>
@@ -189,7 +189,7 @@ const OwnerDashboard = () => {
 
 
             <div className="col-lg-3 col-md-6 col-sm-12">
-  <div className="card" style={{width: "14rem", textAlign:"center", backgroundColor:"green", color:"white"}}>
+  <div className="card dashboard_owner" style={{width: "14rem", textAlign:"center", backgroundColor:"green", color:"white"}}>
   <div className="card-body fonttt">
     <h5 className="card-title"><i class="far fa-money-bill-alt"></i> Total Earning</h5>
     <h3 className="card-subtitle mb-2">Rs. {earnings}</h3>
@@ -204,8 +204,8 @@ const OwnerDashboard = () => {
 {/* <Charts/> */}
 <div className="container mt-5">
 <div className="row padding">
-<div className="col-lg-8 col-md-6 col-sm-12">
-<div style={{width: '50vw', height: 'auto'}}>
+<div className="col-lg-8 col-md-6 col-sm-12" style={{overflowX:"auto"}}>
+<div style={{width: 'auto', height: 'auto'}}>
     <BarChart width={730} height={250} data={data}>
       <CartesianGrid strokeDasharray="3 3" />
       <XAxis dataKey="heading" />
@@ -215,7 +215,7 @@ const OwnerDashboard = () => {
   </div>
 </div>
 
-<div className="col-lg-4 col-md-6 col-sm-12 ">
+<div className="col-lg-4 col-md-6 col-sm-12">
 <ResponsiveContainer width="100%" height="100%">
         <PieChart width={400} height={400}>
           <Pie data={data01} dataKey="value" cx="50%" cy="50%" outerRadius={60} fill="#8884d8" />

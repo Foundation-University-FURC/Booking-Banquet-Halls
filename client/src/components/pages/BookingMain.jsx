@@ -213,7 +213,7 @@ var Total = Total1 + Total2 + Total3 + Total4;
 
           </div>
             </div>
-          <button style={{height:"60px", width:"30%",marginLeft:"35%", borderRadius:"10px"}} className="btn btn-danger mt-5"><h3 style={{fontFamily:"initial"}} onClick={placeOrderHandler}>Book Now</h3></button>
+          <button style={{height:"auto", width:"30%",marginLeft:"35%", borderRadius:"10px"}} className="btn btn-danger mt-5"><h3 style={{fontFamily:"initial"}} onClick={placeOrderHandler}>Book Now</h3></button>
          <div className="container">
           {loading && <LoadingBox></LoadingBox>}
               {error && <MessageBox variant="danger">{error}</MessageBox>}

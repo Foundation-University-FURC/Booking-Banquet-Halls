@@ -37,7 +37,7 @@ const Cards_details = ({match}) => {
         <div className="container mt-3">
             <div className="row padding">
                 <div className="col-lg-6 col-sm-12">
-                <img src={cardD.image} height="400px" width="500px" />
+                <img src={cardD.image} height="100%" width="100%" />
                 </div>
                 <div className="col-lg-6 col-sm-12">
                 <div className="container">

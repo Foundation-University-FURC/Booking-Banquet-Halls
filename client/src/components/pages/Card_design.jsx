@@ -29,45 +29,6 @@ const Card_design = () =>{
 </header>
 
 
-<div className=" filter container my-5">
-<div className="row padding">
-<div className="col-sm-12 col-md-5">
-<form>
-<label style={{fontStyle:"italic",fontWeight:"bolder"}} for="byname">Search By Name</label><br/>
-<input className="filter-for-search" type="text" id="name" name="byname" placeholder="Enter Name" />
-</form>
-</div>
-
-<div className="col-sm-12 col-md-5">
-<form>
-<label style={{fontStyle:"italic",fontWeight:"bolder"}} for="Price">Search By Price</label><br/>
-    <input className="filter-for-search" type="text" id="price" name="byprice" placeholder="Enter Price" />
-</form>
-</div>
-
-<div className="col-2 my-4">
-<form>
-<input style={{fontStyle:"italic",fontWeight:"bolder"}} type="submit" value="Submit" className="for-filter-btn"/>
-</form>
-
-</div>
-
-</div>
-
-</div>
-
-
-{/* <div className="filter my-5">
-  <form>
-   
-    <br/>
-  
-    <br/>
-   
-  
-   
-  </form>
-</div> */}
 
       <div className="container my-5">
 <div className="row">

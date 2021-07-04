@@ -99,7 +99,7 @@ export default function UserEdit(props) {
         />
         <br/>
 
-    <FormLabel component="legend">Is Admin: </FormLabel>
+    {/* <FormLabel component="legend">Is Admin: </FormLabel>
     <FormControlLabel
          value={true}
           control={<Checkbox color="primary" />}
@@ -113,7 +113,7 @@ export default function UserEdit(props) {
           label="No"
           labelPlacement="start"
           onChange={(e) => setIsAdmin(e.target.value)}
-        />
+        /> */}
 <br/>
 
   <button type="submit" className="btn btn-warning">Update</button>

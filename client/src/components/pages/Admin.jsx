@@ -110,7 +110,7 @@ const Admin = () => {
            <h1>Dashboard</h1>
            <div className="row padding">
             <div className="col-lg-3 col-md-6 col-sm-12">
-  <div className="card" style={{width: "14rem", textAlign:"center", backgroundColor:"rgb(247, 183, 7)", color:"white"}}>
+  <div className="card dashboard_admin" style={{width: "14rem", textAlign:"center", backgroundColor:"rgb(247, 183, 7)", color:"white"}}>
   <div className="card-body fonttt">
     <h5 className="card-title"><i className="fas fa-users"></i> Total Users</h5>
     <h3 className="card-subtitle mb-2">{users}</h3>
@@ -120,7 +120,7 @@ const Admin = () => {
             </div>
 
             <div className="col-lg-3 col-md-6 col-sm-12">
-  <div className="card" style={{width: "14rem", textAlign:"center", backgroundColor:"#555", color:"white"}}>
+  <div className="card dashboard_admin" style={{width: "14rem", textAlign:"center", backgroundColor:"#555", color:"white"}}>
   <div className="card-body fonttt">
     <h5 className="card-title"><i className="fas fa-tasks"></i> Total Bookings</h5>
     <h3 className="card-subtitle mb-2">{orders}</h3>
@@ -133,7 +133,7 @@ const Admin = () => {
 
 
             <div className="col-lg-3 col-md-6 col-sm-12">
-  <div className="card" style={{width: "14rem", textAlign:"center", backgroundColor:"#f44336", color:"white"}}>
+  <div className="card dashboard_admin" style={{width: "14rem", textAlign:"center", backgroundColor:"#f44336", color:"white"}}>
   <div className="card-body fonttt">
     <h5 className="card-title"><i className="fas fa-th-list"></i> Marriage Halls</h5>
     <h3 className="card-subtitle mb-2">{halls}</h3>
@@ -144,7 +144,7 @@ const Admin = () => {
 
 
             <div className="col-lg-3 col-md-6 col-sm-12">
-  <div className="card" style={{width: "14rem", textAlign:"center", backgroundColor:"green", color:"white"}}>
+  <div className="card dashboard_admin" style={{width: "14rem", textAlign:"center", backgroundColor:"green", color:"white"}}>
   <div className="card-body fonttt">
     <h5 className="card-title"><i class="far fa-money-bill-alt"></i> Total Earning</h5>
     <h3 className="card-subtitle mb-2">Rs. {earnings}</h3>

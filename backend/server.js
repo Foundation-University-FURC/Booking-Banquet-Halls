@@ -34,6 +34,22 @@ const port = process.env.PORT || 5000
 
 
 
+app.use(express.static(path.join(__dirnam, '/client/build')));
+app.get('*', (req, res) =>
+      res.sendFile(path.join(__dirnam, 'client','build','index.html'))
+        );
+
+app.listen(port, ()=>{
+console.log('server is running at port no '+ port)
+})
+
+
+
+
+
+
+
+
 
 
 // const httpServer = http.Server(app);
@@ -115,13 +131,3 @@ const port = process.env.PORT || 5000
 // app.get('/', (req,res)=>{
 //     res.send('<h1>Hello from Node Server Api</h1>')
 // })
-
-
-app.use(express.static(path.join(__dirnam, '/client/build')));
-app.get('*', (req, res) =>
-      res.sendFile(path.join(__dirnam, 'client','build','index.html'))
-        );
-
-app.listen(port, ()=>{
-console.log('server is running at port no '+ port)
-})

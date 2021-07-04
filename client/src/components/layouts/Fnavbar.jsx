@@ -66,7 +66,7 @@ const Fnavbar = () =>{
               <NavLink className="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false" to="#owner">Owner</NavLink>
               <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
               <li>
-            <NavLink className="dropdown-item" to="/Myprofile">My Profile</NavLink>
+            <a className="dropdown-item" href="/Myprofile">My Profile</a>
             </li>
                   <li>
                     <NavLink className="dropdown-item" to="/HallsList/owner">Marriage Halls</NavLink>
@@ -90,7 +90,7 @@ const Fnavbar = () =>{
                     <NavLink className="dropdown-item" to="/AdminDashboard">Dashboard</NavLink>
                   </li>
                   <li>
-            <NavLink className="dropdown-item" to="/Myprofile">My Profile</NavLink>
+            <a className="dropdown-item" href="/Myprofile">My Profile</a>
             </li>
                   <li>
                     <NavLink className="dropdown-item" to="/HallsList">Halls List</NavLink>

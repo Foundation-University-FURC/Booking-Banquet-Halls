@@ -40,7 +40,7 @@ const Grapher_Details = ({match}) => {
         <div className="container mt-3">
             <div className="row padding">
                 <div className="col-lg-6 col-sm-12">
-                <img src={grapher_Details.image} height="400px" width="500px" />
+                <img src={grapher_Details.image} height="100%" width="100%" />
                 </div>
                 <div className="col-lg-6 col-sm-12">
                 <div className="container">

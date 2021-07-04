@@ -333,8 +333,8 @@ router.put(
       user.name = req.body.name || user.name;
       user.email = req.body.email || user.email;
       if (user.isOwner) {
-        user.owner.name = req.body.ownerName || user.owner.name;
-        user.owner.logo = req.body.ownerLogo || user.owner.logo;
+        // user.owner.name = req.body.ownerName || user.owner.name;
+        // user.owner.logo = req.body.ownerLogo || user.owner.logo;
         user.owner.description = req.body.ownerDescription || user.owner.description;
       }
       if (req.body.password) {
@@ -535,11 +535,31 @@ reviews : [],
   })
 );
 
-
+// for update hall data
 router.put('/lists/:id', isAuth,isOwnerOrAdmin, asysncHandler(async (req,res)=>{
 
   const hallId = req.params.id;
   const data1= await marriage_hall.findById(hallId)
+ 
+  const hall = req.body.hall;
+  const capacity = req.body.capacity;
+  const hallprice = req.body.Hprice;
+
+  const MenuName = req.body.menu;
+  const MenuPrice = req.body.Mprice;
+  
+  const DName = req.body.decoration;
+  const DPrice = req.body.Dprice;
+  
+  const SName = req.body.Sname;
+  const SPrice = req.body.Sprice;
+  
+  for(i=0;i<hallprice.length;i++)
+  {
+    console.log("price: ",hallprice[i]);
+  }
+  console.log("capacity: ",capacity);
+
   if(data1){
     data1.name = req.body.name;
     data1.Email= req.body.Email;
@@ -548,6 +568,41 @@ router.put('/lists/:id', isAuth,isOwnerOrAdmin, asysncHandler(async (req,res)=>{
     data1.location= req.body.location;
     data1.Contact_No= req.body.Contact_No;
     data1.website= req.body.website;
+    
+    for(i=0;i< data1.HallName.length;i++){
+        data1.HallName[i].name = hall[i];
+       
+      }
+    for(i=0;i< data1.HallName.length;i++){
+      data1.HallName[i].capacity = capacity[i];
+    }
+    for(i=0;i< data1.HallName.length;i++){
+      data1.HallName[i].price = hallprice[i];
+    }
+
+
+    for(i=0;i< data1.Menu.length;i++){
+      data1.Menu[i].name = MenuName[i];
+    }
+    for(i=0;i< data1.Menu.length;i++){
+      data1.Menu[i].price = MenuPrice[i];
+    }
+
+
+    for(i=0;i< data1.Decoration.length;i++){
+      data1.Decoration[i].name = DName[i];
+    }
+    for(i=0;i< data1.Menu.length;i++){
+      data1.Decoration[i].price = DPrice[i];
+    }
+
+    for(i=0;i< data1.Other_Services.length;i++){
+      data1.Other_Services[i].name = SName[i];
+    }
+    for(i=0;i< data1.Other_Services.length;i++){
+      data1.Other_Services[i].price = SPrice[i];
+    }
+
 
     const updatedData = data1.save();
     res.send({message: "Marriage Hall successfully updated", data: updatedData})

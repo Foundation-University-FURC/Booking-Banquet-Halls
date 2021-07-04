@@ -13,8 +13,8 @@ export default function ProfileScreen() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [ownerName, setOwnerName] = useState('');
-  const [ownerLogo, setOwnerLogo] = useState('');
+  // const [ownerName, setOwnerName] = useState('');
+  // const [ownerLogo, setOwnerLogo] = useState('');
   const [ownerDescription, setOwnerDescription] = useState('');
 
   const userSignin = useSelector((state) => state.userSignin);
@@ -40,8 +40,8 @@ export default function ProfileScreen() {
       setName(user.name);
       setEmail(user.email);
       if (user.owner) {
-        setOwnerName(user.owner.name);
-        setOwnerLogo(user.owner.logo);
+        // setOwnerName(user.owner.name);
+        // setOwnerLogo(user.owner.logo);
         setOwnerDescription(user.owner.description);      
       }
     }
@@ -53,8 +53,8 @@ export default function ProfileScreen() {
       alert('Password and Confirm Password Are Not Matched');
     } else {
       dispatch(updateUserProfile({ userId: user._id, name, email, password,
-        ownerName,
-        ownerLogo,
+        // ownerName,
+        // ownerLogo,
         ownerDescription, 
       }));
     }
@@ -104,16 +104,7 @@ export default function ProfileScreen() {
   {user.isOwner && (
               <div className="mb-3">
                 <h2 className="fonttt mt-4" style={{textAlign:"center"}}>Owner</h2>
-                <div className="form-group">
-    <h5><label for="exampleInputEmail1">Owner Name</label></h5>
-    <input type="text" className="form-control" id="ownername" aria-describedby="ownername"  value={ownerName}
-                onChange={(e) => setOwnerName(e.target.value)} />
-  </div>
-  <div className="form-group">
-    <h5><label for="exampleInputEmail1">Owner Logo</label></h5>
-    <input type="text" className="form-control" id="ownerlogo" aria-describedby="ownerlogo"  value={ownerLogo}
-                onChange={(e) => setOwnerLogo(e.target.value)} />
-  </div>
+               
   <div className="form-group">
     <h5><label for="exampleInputEmail1">Owner Description</label></h5>
     <input type="text" className="form-control" id="ownerdescription" aria-describedby="owenerdescription"  value={ownerDescription}
